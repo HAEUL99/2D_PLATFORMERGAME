@@ -6,24 +6,27 @@ using Photon.Realtime;
 
 public class TestConnect : MonoBehaviourPunCallbacks
 {
-    // Start is called before the first frame update
+
     void Start()
     {
         print("Connecting to server.");
+        //this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
         PhotonNetwork.AutomaticallySyncScene = true;
+
+        // #Critical, we must first and foremost connect to Photon Online Server.
         PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
 
     }
 
-
+    //Called when the client is connected to the Master Server and ready for matchmaking and other tasks.
     public override void OnConnectedToMaster()
     {
 
         Debug.Log("Connected to Photon.", this);
-
         Debug.Log("My nickname is" + PhotonNetwork.LocalPlayer.NickName, this);
+
         if(!PhotonNetwork.InLobby)
             PhotonNetwork.JoinLobby();
     }
@@ -36,6 +39,6 @@ public class TestConnect : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        Debug.Log("Jointed lobby");
+        Debug.Log("Joined lobby");
     }
 }

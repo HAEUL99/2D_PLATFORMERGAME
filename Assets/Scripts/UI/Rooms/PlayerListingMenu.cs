@@ -12,6 +12,9 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private PlayerListing _playerListing;
+
+    [SerializeField]
+    private TextMeshProUGUI _readyUpText;
     /*
     [SerializeField]
     private TextMeshProUGUI _readyUpText;
@@ -23,9 +26,11 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     
     public override void OnEnable()
     {
+        
         base.OnEnable();
-        //SetReadyUp(false);
         GetCurrentRoomPlayer();
+        SetReadyUp(false);
+        
     }
 
     public override void OnDisable()
@@ -51,6 +56,14 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
         _roomsCanvases = canvases;
     }
 
+    private void SetReadyUp(bool state)
+    {
+        _ready = state;
+        if (_ready)
+            _readyUpText.text = "Ready";
+        else
+            _readyUpText.text = "No";
+    }
 
 
 
@@ -88,6 +101,11 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
         
     }
 
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        _roomsCanvases.CurrentRoomCanvas.LeaveRoomMenu.OnClick_LeaveRoom();
+    }
+
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
 
@@ -108,6 +126,16 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
+            for (int i = 0; i < _listings.Count; i++)
+            {
+                if (_listings[i].Player != PhotonNetwork.LocalPlayer)
+                {
+                    if (!_listings[i].Ready)
+                        return;
+                }
+            }
+
+
             // Prevent other users from participating in the game anymore.
             PhotonNetwork.CurrentRoom.IsOpen = false;
             // This room is no longer visible on the room list.
@@ -115,6 +143,27 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             PhotonNetwork.LoadLevel(1);
         }
             
+    }
+
+    public void OnClick_ReadyUp()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            SetReadyUp(!_ready);
+            base.photonView.RPC("RPC_ChangeReadyState", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer, _ready);
+  
+        }
+
+    }
+
+    [PunRPC]
+    private void RPC_ChangeReadyState(Player player, bool ready)
+    {
+        int index = _listings.FindIndex(x => x.Player == player);
+        if (index != -1)
+        {
+            _listings[index].Ready = ready;
+        }
     }
     
 
