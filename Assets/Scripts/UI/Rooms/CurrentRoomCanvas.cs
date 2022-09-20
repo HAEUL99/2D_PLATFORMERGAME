@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//After Joining Room
 public class CurrentRoomCanvas : MonoBehaviour
 {
     [SerializeField]

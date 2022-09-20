@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Creating or Joining Room Canvas
 public class CreateOrJoinRoomCanvas : MonoBehaviour
 {
     [SerializeField]
