@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CreateRoomMenu : MonoBehaviourPunCallbacks
 {
@@ -44,5 +45,10 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("Room creation failed: " + message);
+    }
+
+    public void OnClick_Back()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }

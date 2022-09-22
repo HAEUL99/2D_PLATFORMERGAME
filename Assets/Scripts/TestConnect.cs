@@ -16,9 +16,9 @@ public class TestConnect : MonoBehaviourPunCallbacks
         // #Critical, we must first and foremost connect to Photon Online Server.
         //PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
         //PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
-        int value = Random.Range(0, 9999);
-        PhotonNetwork.NickName = "HAEUL" + value.ToString();
-        PhotonNetwork.GameVersion = "0.0.0";
+        //int value = Random.Range(0, 9999);
+        //PhotonNetwork.NickName = "HAEUL" + value.ToString();
+        //PhotonNetwork.GameVersion = "0.0.0";
 
         PhotonNetwork.ConnectUsingSettings();
 
