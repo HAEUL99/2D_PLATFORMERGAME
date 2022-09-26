@@ -12,6 +12,8 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private TextMeshProUGUI _roomName;
+    [SerializeField]
+    private LogIn logIn;
 
 
     private RoomsCanvases _roomsCanvases;
@@ -29,6 +31,7 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
 
         //CreateRoom
         //JoinOrCreateRoom
+       
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
 

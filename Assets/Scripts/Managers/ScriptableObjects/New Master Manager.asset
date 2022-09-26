@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 043b06d4986d244a2afc5533d4d00f95, type: 3}
-  m_Name: MasterManager
+  m_Name: New Master Manager
   m_EditorClassIdentifier: 
-  _gameSettings: {fileID: 11400000, guid: aec611ad283fd48c7b028f416804dc88, type: 2}
+  _gameSettings: {fileID: 11400000, guid: f29269eabf5cb41439888aed6cbf94cd, type: 2}
+  _networkedPrefabs:
+  - Prefab: {fileID: 7842382372318021738, guid: d350a25ccc6b84224ba6332c61aba1f2, type: 3}
+    Path: Temp/Player

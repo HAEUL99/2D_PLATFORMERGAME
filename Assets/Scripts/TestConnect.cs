@@ -6,19 +6,21 @@ using Photon.Realtime;
 
 public class TestConnect : MonoBehaviourPunCallbacks
 {
+    [SerializeField]
+    private LogIn logIn;
 
     void Start()
     {
         print("Connecting to server.");
         //this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
+        PhotonNetwork.SendRate = 40;
+        PhotonNetwork.SerializationRate = 40;
+
         PhotonNetwork.AutomaticallySyncScene = true;
 
         // #Critical, we must first and foremost connect to Photon Online Server.
-        //PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
-        //PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
-        //int value = Random.Range(0, 9999);
-        //PhotonNetwork.NickName = "HAEUL" + value.ToString();
-        //PhotonNetwork.GameVersion = "0.0.0";
+        PhotonNetwork.NickName = PlayerSetting.FullNickName;
+        PhotonNetwork.GameVersion = "0.0.0";
 
         PhotonNetwork.ConnectUsingSettings();
 

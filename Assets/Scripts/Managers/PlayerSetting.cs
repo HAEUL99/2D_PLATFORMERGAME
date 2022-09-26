@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSetting : MonoBehaviour
+public static class PlayerSetting 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //nickname + random number
+    private static string _fullnickName;
+    public static string FullNickName { get { return _fullnickName; } set { _fullnickName = value; } }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    //only nickname
+    private static string _nickName;
+    public static string NickName { get { return _nickName; } set { _nickName = value; } }
+
+   // public static GameObject LocalPlayerInstance;
+
+
+    
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Photon.Pun;
+//using Photon.Pun;
 using UnityEngine.SceneManagement;
 
 public class LogIn : MonoBehaviour
@@ -16,7 +16,7 @@ public class LogIn : MonoBehaviour
     [SerializeField]
     private Check_Popup check_Popup;
     // Nickname to be marked
-    private string _markednickName;
+    public string _markednickName;
     [SerializeField]
     private GameObject warn_PopupObject;
 
@@ -25,7 +25,7 @@ public class LogIn : MonoBehaviour
 
     private void Awake()
     {
-        PhotonNetwork.NickName = null;
+       // PhotonNetwork.NickName = null;
 
     }
 
@@ -39,8 +39,10 @@ public class LogIn : MonoBehaviour
     {
         // To prevent overlapping nickname
         int value = Random.Range(0, 9999);
-        PhotonNetwork.NickName = _nickNameInF.text + value.ToString();
-        _markednickName = _nickNameInF.text;
+        //PhotonNetwork.NickName = _nickNameInF.text + value.ToString();
+        PlayerSetting.FullNickName = _nickNameInF.text + value.ToString();
+        PlayerSetting.NickName = _nickNameInF.text;
+        //_markednickName = _nickNameInF.text;
     }
 
     private void ShowNickName()
@@ -59,7 +61,7 @@ public class LogIn : MonoBehaviour
 
     public void Click_Next()
     {
-        if (PhotonNetwork.NickName == null || string.IsNullOrEmpty(PhotonNetwork.NickName) || string.IsNullOrEmpty(_markednickName))
+        if (string.IsNullOrEmpty(PlayerSetting.NickName))
         {
             Debug.Log("PhotonNetwork.NickName is Empty");
             warn_PopupObject.SetActive(true);
@@ -67,7 +69,7 @@ public class LogIn : MonoBehaviour
         else
         {
             // show the check_popup
-            check_Popup._noticetxt.text = notice + _markednickName;
+            check_Popup._noticetxt.text = notice + PlayerSetting.NickName;
             check_PopupObject.SetActive(true);
 
             

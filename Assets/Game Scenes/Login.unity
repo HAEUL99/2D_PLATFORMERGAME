@@ -2879,6 +2879,7 @@ MonoBehaviour:
   _nickNametxt: {fileID: 1233530873}
   check_PopupObject: {fileID: 2074447261}
   check_Popup: {fileID: 2074447262}
+  _markednickName: 
   warn_PopupObject: {fileID: 2009342036}
 --- !u!1 &2009342036
 GameObject:

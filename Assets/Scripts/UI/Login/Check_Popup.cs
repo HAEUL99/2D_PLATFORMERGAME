@@ -12,7 +12,7 @@ public class Check_Popup : MonoBehaviour
 
     public void OnClick_Yes()
     {
-        PhotonNetwork.GameVersion = "0.0.0";
+        //PhotonNetwork.GameVersion = "0.0.0";
         SceneManager.LoadScene("Main Menu");
     }
 

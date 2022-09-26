@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPun
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
@@ -16,20 +17,57 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
 
+
+    public static GameObject LocalPlayerInstance;
+    public CameraController _cameraController;
+
     private enum movementState { idle, skipping, jumping, falling }
+
+    /*
+    private void Awake()
+    {
+        if (photonView.IsMine)
+        {
+            PlayerSetting.LocalPlayerInstance = this.gameObject;
+        }
+    }
+    */
 
     // Start is called before the first frame update
     private void Start()
     {
+       
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+
+        
+        /*
+        if (_cameraController != null)
+        {
+            if (photonView.IsMine)
+            {
+                Debug.Log("photonView.IsMine");
+                _cameraController.OnStartFollowing(this.gameObject);
+            }
+        }
+        else
+        {
+            Debug.LogError("<Color=Red><a>Missing</a></Color> CameraWork Component on playerPrefab.", this);
+        }
+        */
     }
 
     // Update is called once per frame
     private void Update()
     {
+        //Photon pun
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
+
         //Using float for horizontal movement to support controller inputs
         dirX = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);

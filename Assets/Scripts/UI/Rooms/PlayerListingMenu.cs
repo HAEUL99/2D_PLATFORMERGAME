@@ -140,7 +140,7 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.IsOpen = false;
             // This room is no longer visible on the room list.
             PhotonNetwork.CurrentRoom.IsVisible = false;
-            PhotonNetwork.LoadLevel("Game Scenes/Game");
+            PhotonNetwork.LoadLevel("Game Scenes/SponTest");
         }
             
     }
