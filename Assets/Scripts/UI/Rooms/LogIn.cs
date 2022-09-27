@@ -18,7 +18,8 @@ public class LogIn : MonoBehaviour
     public string _markednickName;
     [SerializeField]
     private GameObject warn_PopupObject;
-
+    [SerializeField]
+    private GameObject EnterName_txt;
     private string notice;
 
 
@@ -48,12 +49,15 @@ public class LogIn : MonoBehaviour
         if (string.IsNullOrEmpty(PlayerSetting.NickName))
         {
             Debug.Log("PhotonNetwork.NickName is Empty");
+            EnterName_txt.SetActive(false);
             warn_PopupObject.SetActive(true);
+            
         }
         else
         {
             // show the check_popup
             check_Popup._noticetxt.text = notice + PlayerSetting.NickName;
+            EnterName_txt.SetActive(false);
             check_PopupObject.SetActive(true);
 
             
