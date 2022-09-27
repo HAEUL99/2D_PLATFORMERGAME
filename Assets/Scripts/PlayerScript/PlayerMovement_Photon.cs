@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 public class PlayerMovement_Photon : MonoBehaviourPun
@@ -87,12 +88,14 @@ public class PlayerMovement_Photon : MonoBehaviourPun
         if (dirX > 0f)
         {
             state = movementState.skipping;
-            sprite.flipX = false;
+            //sprite.flipX = false;
+            SwitchFlipX(false);
         }
         else if (dirX < 0f)
         {
             state = movementState.skipping;
-            sprite.flipX = true;
+            //sprite.flipX = true;
+            SwitchFlipX(true);
         }
         else
         {
@@ -114,5 +117,18 @@ public class PlayerMovement_Photon : MonoBehaviourPun
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
+    public void SwitchFlipX(bool flipStatus)
+    {
+
+        base.photonView.RPC("RPC_ChangeFlipState", RpcTarget.All, flipStatus);
+
+    }
+
+    [PunRPC]
+    private void RPC_ChangeFlipState(bool flipStatus)
+    {
+        sprite.flipX = flipStatus;
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 204474323655442161}
   - component: {fileID: 204474323655441678}
   - component: {fileID: 204474323655441679}
-  - component: {fileID: 4678027118911440277}
+  - component: {fileID: 1567396994843889298}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -85,7 +85,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204474323655441676}
   m_Enabled: 1
---- !u!114 &4678027118911440277
+--- !u!114 &1567396994843889298
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 204474323655441676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 186fc501389a4dd40884478296d86ae6, type: 3}
+  m_Script: {fileID: 11500000, guid: 91aeb981231a54b34be12d5bab92ccb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isFollowing: 0
@@ -316,7 +316,7 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: state
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: death
   m_SynchronizeLayers:
   - SynchronizeType: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpableGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   moveSpeed: 7
   jumpForce: 14
   _cameraController: {fileID: 0}
