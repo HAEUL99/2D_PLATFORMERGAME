@@ -9,8 +9,7 @@ public class LogIn : MonoBehaviour
 {
     [SerializeField]
     private TMP_InputField _nickNameInF;
-    [SerializeField]
-    private TextMeshProUGUI _nickNametxt;
+
     [SerializeField]
     private GameObject check_PopupObject;
     [SerializeField]
@@ -23,11 +22,6 @@ public class LogIn : MonoBehaviour
     private string notice;
 
 
-    private void Awake()
-    {
-       // PhotonNetwork.NickName = null;
-
-    }
 
     private void Start()
     {
@@ -45,22 +39,12 @@ public class LogIn : MonoBehaviour
         //_markednickName = _nickNameInF.text;
     }
 
-    private void ShowNickName()
-    {
-        _nickNametxt.text = _nickNameInF.text;
-
-    }
 
 
-    public void Click_OK()
-    {
-        ShowNickName();
-        SetNickName();
-
-    }
 
     public void Click_Next()
     {
+        SetNickName();
         if (string.IsNullOrEmpty(PlayerSetting.NickName))
         {
             Debug.Log("PhotonNetwork.NickName is Empty");
