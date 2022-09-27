@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Photon.Pun;
+//using Photon.Pun;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviourPun
+public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
@@ -18,8 +18,7 @@ public class PlayerMovement : MonoBehaviourPun
     [SerializeField] private float jumpForce = 14f;
 
 
-    public static GameObject LocalPlayerInstance;
-    public CameraController _cameraController;
+
 
     private enum movementState { idle, skipping, jumping, falling }
 
@@ -63,10 +62,6 @@ public class PlayerMovement : MonoBehaviourPun
     private void Update()
     {
         //Photon pun
-        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
-        {
-            return;
-        }
 
         //Using float for horizontal movement to support controller inputs
         dirX = Input.GetAxis("Horizontal");

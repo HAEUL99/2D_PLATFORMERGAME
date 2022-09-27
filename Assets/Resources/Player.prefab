@@ -110,11 +110,11 @@ GameObject:
   - component: {fileID: 3151721295272850884}
   - component: {fileID: 876838189194013102}
   - component: {fileID: 4239757322615475673}
-  - component: {fileID: 655290937713737142}
   - component: {fileID: 4686664526437402867}
   - component: {fileID: 1014922598757088960}
   - component: {fileID: 9219640242691447982}
   - component: {fileID: 6153800233582496871}
+  - component: {fileID: 4642040472481658948}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -237,24 +237,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8654423, y: 1.413611}
   m_EdgeRadius: 0
---- !u!114 &655290937713737142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905975718081661427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e68595b2d3218104c92b3f0564171b3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpableGround:
-    serializedVersion: 2
-    m_Bits: 64
-  moveSpeed: 7
-  jumpForce: 14
-  _cameraController: {fileID: 0}
 --- !u!95 &4686664526437402867
 Animator:
   serializedVersion: 4
@@ -333,6 +315,27 @@ MonoBehaviour:
   - Type: 3
     SynchronizeType: 1
     Name: state
+  - Type: 9
+    SynchronizeType: 0
+    Name: death
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &4642040472481658948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5905975718081661427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc075aeebc21e40a282793598c0a97ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 0
+  moveSpeed: 7
+  jumpForce: 14
+  _cameraController: {fileID: 0}
