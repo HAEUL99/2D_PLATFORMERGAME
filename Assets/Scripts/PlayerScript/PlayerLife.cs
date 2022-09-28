@@ -22,4 +22,9 @@ public class PlayerLife : MonoBehaviourPun
         anim.SetTrigger("death");
     }
 
+    private void Respawn() {
+        transform.position = new Vector3(0f, 5f, 0f);
+        anim.SetTrigger("respawn");
+    }
+
 }
