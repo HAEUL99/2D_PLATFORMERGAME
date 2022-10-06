@@ -4,6 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using System.Linq;
+using System;
 
 public class PlayerListingMenu : MonoBehaviourPunCallbacks
 {
@@ -31,6 +33,9 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     private RoomsCanvases _roomsCanvases;
     private bool _ready = false;
 
+    private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
+
+    int[] randomArray = {1,2,3,4}; 
 
     public void Start()
     {
@@ -49,6 +54,7 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             _settingsBtn.SetActive(true);
         }
 
+        
 
     }
 
@@ -112,6 +118,11 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
         if (index != -1)
         {
             _listings[index].SetPlayerInfo(player);
+
+            /*
+            _myCustomProperties["RandomNumber"] = RandomArray;
+            PhotonNetwork.LocalPlayer.CustomProperties = _myCustomProperties;
+            */
         }
         else
         {
@@ -121,6 +132,9 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             {
                 listing.SetPlayerInfo(player);
                 _listings.Add(listing);
+                /*
+                _myCustomProperties["RandomNumber"] = 0;
+                PhotonNetwork.LocalPlayer.CustomProperties = _myCustomProperties;*/
             }
         }
         
@@ -166,6 +180,17 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             // This room is no longer visible on the room list.
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.LoadLevel("Game Scenes/SponTest");
+            /*
+            ArrayList arrayList = new ;
+            for (int i = 0; i < PhotonNetwork.CountOfPlayersInRooms; i++)
+            {
+                arrayList.Add(i);
+            }
+            for (int i = 0; i < PhotonNetwork.CountOfPlayersInRooms; i++)
+            {
+                PhotonNetwork.PlayerList[i].CustomProperties["CharNum"] = 
+            }
+            */
         }
             
     }
@@ -178,8 +203,24 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
 
     }
 
- 
-    
+    public void OnClick_ReadyUp()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            SetReadyUp(!_ready);
+            base.photonView.RPC("RPC_ChangeReadyState", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer, _ready);
 
+        }
 
+    }
+
+    [PunRPC]
+    private void RPC_ChangeReadyState(Player player, bool ready)
+    {
+        int index = _listings.FindIndex(x => x.Player == player);
+        if (index != -1)
+        {
+            _listings[index].Ready = ready;
+        }
+    }
 }

@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public GameObject[] obj;
     public int[] orderArray;
-    public PlayerListingMenu _playerListingMenu;
 
     // public int orderNum;
     private void Start()
@@ -22,7 +21,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
         //RPC_charRandomAssign(random)
     }
-
+    /*
     public void Awake()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -43,15 +42,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
     [PunRPC]
-    private void RPC_ChangeReadyState(Player player, int[] orderArray)
+    private void RPC_RandomCharact(Player player, int[] orderArray)
     {
-        /*
+        
         int index = _listings.FindIndex(x => x.Player == player);
         if (index != -1)
         {
             _listings[index].charNum = orderArray[index];
         }
-        */
+        
     }
-
+*/
 }

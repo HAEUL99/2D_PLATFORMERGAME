@@ -17,7 +17,11 @@ public class PlayerListing : MonoBehaviour
     public void SetPlayerInfo(Player player)
     {
         Player = player;
+        //int result = (int)player.CustomProperties["RandomNumebr"];
         _text.text = player.NickName;
+
+   
+
         //_text.text = PlayerSetting.NickName;
     }
 }
