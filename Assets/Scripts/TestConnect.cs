@@ -19,7 +19,7 @@ public class TestConnect : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
 
         // #Critical, we must first and foremost connect to Photon Online Server.
-        PhotonNetwork.NickName = PlayerSetting.FullNickName;
+        PhotonNetwork.NickName = PlayerSetting.NickName;
         PhotonNetwork.GameVersion = "0.0.0";
 
         PhotonNetwork.ConnectUsingSettings();

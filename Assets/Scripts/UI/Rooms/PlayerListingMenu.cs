@@ -27,7 +27,7 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     [SerializeField]
     private TextMeshProUGUI _readyUpText;
     */
-    private List<PlayerListing> _listings = new List<PlayerListing>();
+    public List<PlayerListing> _listings = new List<PlayerListing>();
     private RoomsCanvases _roomsCanvases;
     private bool _ready = false;
 
@@ -170,26 +170,7 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             
     }
 
-    public void OnClick_ReadyUp()
-    {
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            SetReadyUp(!_ready);
-            base.photonView.RPC("RPC_ChangeReadyState", RpcTarget.MasterClient, PhotonNetwork.LocalPlayer, _ready);
-  
-        }
-
-    }
-
-    [PunRPC]
-    private void RPC_ChangeReadyState(Player player, bool ready)
-    {
-        int index = _listings.FindIndex(x => x.Player == player);
-        if (index != -1)
-        {
-            _listings[index].Ready = ready;
-        }
-    }
+   
 
     public void OnClick_Settings()
     {

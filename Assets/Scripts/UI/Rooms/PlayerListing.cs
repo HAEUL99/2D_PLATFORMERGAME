@@ -12,11 +12,12 @@ public class PlayerListing : MonoBehaviour
 
     public Player Player { get; private set; }
     public bool Ready = false;
+    public int charNum;
 
     public void SetPlayerInfo(Player player)
     {
         Player = player;
-        //_text.text = player.NickName;
-        _text.text = PlayerSetting.NickName;
+        _text.text = player.NickName;
+        //_text.text = PlayerSetting.NickName;
     }
 }
