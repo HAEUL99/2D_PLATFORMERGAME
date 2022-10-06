@@ -9,6 +9,8 @@ public class Check_Popup : MonoBehaviour
 {
     [SerializeField]
     public TextMeshProUGUI _noticetxt;
+    [SerializeField]
+    private GameObject _accouttxt;
 
     public void OnClick_Yes()
     {
@@ -19,10 +21,12 @@ public class Check_Popup : MonoBehaviour
     public void OnClcik_No()
     {
         gameObject.SetActive(false);
+        _accouttxt.SetActive(true);
     }
 
     public void OnClick_Close()
     {
         gameObject.SetActive(false);
+        _accouttxt.SetActive(true);
     }
 }

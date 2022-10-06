@@ -11,9 +11,7 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
 {
 
     [SerializeField]
-    private TextMeshProUGUI _roomName;
-    [SerializeField]
-    private LogIn logIn;
+    private GameObject _createUI;
 
 
     private RoomsCanvases _roomsCanvases;
@@ -24,26 +22,25 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
     }
 
 
-    public void OnClick_CreateRoom()
+    public void OnClick_TryCreateRoom()
     {
         if (!PhotonNetwork.IsConnected)
             return;
 
+        OnCreateUI();
+
         //CreateRoom
         //JoinOrCreateRoom
-       
-        RoomOptions options = new RoomOptions();
-        options.MaxPlayers = 4;
 
-        PhotonNetwork.JoinOrCreateRoom(_roomName.text, options, TypedLobby.Default);
+
     }
 
-    public override void OnCreatedRoom()
+    public void OnCreateUI()
     {
-        Debug.Log("Created room successfully.");
-        _roomsCanvases.CurrentRoomCanvas.Show();
-     
+        _createUI.SetActive(true);
+
     }
+
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {

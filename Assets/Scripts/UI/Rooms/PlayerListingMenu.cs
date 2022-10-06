@@ -15,6 +15,14 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private TextMeshProUGUI _readyUpText;
+    [SerializeField]
+    private GameObject ReadyBtn;
+    [SerializeField]
+    private GameObject GameStartBtn;
+    [SerializeField]
+    private GameObject _settingsBtn;
+    [SerializeField]
+    private GameObject _settingUI;
     /*
     [SerializeField]
     private TextMeshProUGUI _readyUpText;
@@ -23,7 +31,27 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     private RoomsCanvases _roomsCanvases;
     private bool _ready = false;
 
-    
+
+    public void Start()
+    {
+        ReadyBtn.SetActive(false);
+        GameStartBtn.SetActive(false);
+        _settingUI.SetActive(false);
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            ReadyBtn.SetActive(true);
+            _settingsBtn.SetActive(false);
+        }
+        else
+        {
+
+            GameStartBtn.SetActive(true);
+            _settingsBtn.SetActive(true);
+        }
+
+
+    }
+
     public override void OnEnable()
     {
         
@@ -41,16 +69,7 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
 
         _listings.Clear();
     }
-    /*
-    private void SetReadyUp(bool state)
-    {
-        _ready = state;
-        if (_ready)
-            _readyUpText.text = "R";
-        else
-            _readyUpText.text = "N";
-    }
-    */
+
     public void FirstInitialize(RoomsCanvases canvases)
     {
         _roomsCanvases = canvases;
@@ -60,9 +79,15 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     {
         _ready = state;
         if (_ready)
+        {
             _readyUpText.text = "Ready";
+            _readyUpText.color = Color.green;
+        }
         else
-            _readyUpText.text = "No";
+        {
+            _readyUpText.text = "Not Ready";
+            _readyUpText.color = Color.red;
+        }
     }
 
 
@@ -165,6 +190,14 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             _listings[index].Ready = ready;
         }
     }
+
+    public void OnClick_Settings()
+    {
+        _settingUI.SetActive(true);
+
+    }
+
+ 
     
 
 

@@ -2395,6 +2395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13e36134aa034cb1a1aec51b28a996a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _accounttxt: {fileID: 696011917}
 --- !u!114 &2009342039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2602,6 +2603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _noticetxt: {fileID: 676206825}
+  _accouttxt: {fileID: 696011917}
 --- !u!224 &2074447263
 RectTransform:
   m_ObjectHideFlags: 0
