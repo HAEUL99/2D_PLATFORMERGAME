@@ -14,6 +14,7 @@ public class PlayerMovement_Photon : MonoBehaviourPun
     [SerializeField] private LayerMask jumpableGround;
 
     private float dirX = 0f;
+    private int carrots = 0;
     //serializeField to allow changes to variables in Unity editor
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
@@ -71,7 +72,7 @@ public class PlayerMovement_Photon : MonoBehaviourPun
 
         //Using float for horizontal movement to support controller inputs
         dirX = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(dirX * (moveSpeed + (1.5f * carrots)), rb.velocity.y);
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -124,6 +125,13 @@ public class PlayerMovement_Photon : MonoBehaviourPun
 
         base.photonView.RPC("RPC_ChangeFlipState", RpcTarget.All, flipStatus);
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.CompareTag("Carrot")) {
+            Destroy(collision.gameObject);
+            carrots++;
+        }
     }
 
     [PunRPC]
