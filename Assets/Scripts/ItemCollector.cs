@@ -16,7 +16,6 @@ public class ItemCollector : MonoBehaviour
         if (collision.gameObject.CompareTag("Carrot")) {
             Destroy(collision.gameObject);
             carrots++;
-            Debug.Log("Carrots: " + carrots);
         }
     }
 }

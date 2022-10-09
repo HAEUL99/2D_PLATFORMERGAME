@@ -657,7 +657,13 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -671,11 +677,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: f8ef6b4c-fd9b-4f0e-ab36-75e411051a68
+  cloudProjectId: b4b948ba-4248-48c7-9a16-0eb54767b601
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: 2D_PlatFormer_Game
+  organizationId: lhwool0915
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
