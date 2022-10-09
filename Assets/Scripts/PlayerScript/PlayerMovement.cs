@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator anim;
+    private ItemCollector itemCol;
 
     [SerializeField] private LayerMask jumpableGround;
 
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
-        
+        itemCol = GetComponent<ItemCollector>();
         /*
         if (_cameraController != null)
         {
@@ -65,7 +66,8 @@ public class PlayerMovement : MonoBehaviour
 
         //Using float for horizontal movement to support controller inputs
         dirX = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(dirX * (moveSpeed + itemCol.GetCarrots), rb.velocity.y);
+        Debug.Log(itemCol.GetCarrots);
 
         if (Input.GetButtonDown("Jump") && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
