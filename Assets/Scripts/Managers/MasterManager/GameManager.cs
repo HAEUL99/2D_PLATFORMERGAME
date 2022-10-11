@@ -5,52 +5,75 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Linq;
+using ExitGames.Client.Photon;
+using System.Collections.Generic;
+using TMPro;
 
-
-public class GameManager : MonoBehaviourPunCallbacks
+public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
-    public GameObject playerPrefab;
-
     public GameObject[] obj;
-    public int[] orderArray;
+    
+    public TMP_Text text;
+    public TMP_Text text1;
+    private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
 
-    // public int orderNum;
-    private void Start()
+    private void OnEnable()
     {
-
-        PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
-        //RPC_charRandomAssign(random)
-    }
-    /*
-    public void Awake()
-    {
-        if (PhotonNetwork.IsMasterClient)
-            orderArray = RandomArray();
-        base.photonView.RPC("RPC_RandomCharact", RpcTarget.All, PhotonNetwork.LocalPlayer, orderArray);
-
-
+        PhotonNetwork.AddCallbackTarget(this);
     }
 
-    public int[] RandomArray()
+    private void OnDisable()
     {
-        int[] arr = { 1, 2, 3, 4 };
-        System.Random random = new System.Random();
-        arr = arr.OrderBy(x => random.Next()).ToArray();
-        return arr;
+        PhotonNetwork.RemoveCallbackTarget(this);
     }
 
 
 
-    [PunRPC]
-    private void RPC_RandomCharact(Player player, int[] orderArray)
+
+
+    public void OnEvent(EventData photonEvent)
     {
-        
-        int index = _listings.FindIndex(x => x.Player == player);
-        if (index != -1)
+        if (photonEvent.Code == 0)
         {
-            _listings[index].charNum = orderArray[index];
+
+            int[] array = (int[])photonEvent.CustomData;
+
+            for (int i = 0; i < 4; i++)
+            {
+                Debug.Log($"array{i} : {array[i]}");
+            }
+
+
+            Dictionary<int, Photon.Realtime.Player> pList = Photon.Pun.PhotonNetwork.CurrentRoom.Players;
+
+
+
+            foreach (KeyValuePair<int, Photon.Realtime.Player> p in pList)
+            {
+
+                Debug.Log($"PlayerId (not nickname) : {p.Value.ActorNumber}");
+
+                _myCustomProperties["CharNum"] = array[p.Value.ActorNumber - 1];
+
+                p.Value.CustomProperties = _myCustomProperties;
+
+
+            }
+
+
+            int num1 = (int)PhotonNetwork.LocalPlayer.CustomProperties["CharNum"];
+            Debug.Log($"num1: {num1}");
+
+            PhotonNetwork.Instantiate(obj[num1].name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+
+
+
+
+
+
+
         }
-        
     }
-*/
+
+
 }

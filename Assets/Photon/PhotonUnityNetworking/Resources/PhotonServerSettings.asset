@@ -42,6 +42,8 @@ MonoBehaviour:
   - RPC_ChangeReadyState
   - RPC_ChangeFlipState
   - RPC_RandomCharact
+  - RPC_charRandomAssign
+  - RPC_charAssign
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

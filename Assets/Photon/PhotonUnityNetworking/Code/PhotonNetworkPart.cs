@@ -61,6 +61,11 @@ namespace Photon.Pun
             }
         }
 
+        public static void RaiseEvent(int v, RaiseEventOptions raiseEventOptions, SendOptions sendReliable)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Returns a new iterable collection of current photon views.
         /// </summary>
@@ -247,6 +252,8 @@ namespace Photon.Pun
                 return _levelLoadingProgress;
             }
         }
+
+        public static object PhotonView { get; set; }
 
         /// <summary>
         /// Called when "this client" left a room to clean up.
@@ -1595,6 +1602,7 @@ namespace Photon.Pun
 
 
         private static readonly Dictionary<RaiseEventBatch, SerializeViewBatch> serializeViewBatches = new Dictionary<RaiseEventBatch, SerializeViewBatch>();
+        public static readonly int ViewID;
 
 
         /// <summary>Calls all locally controlled PhotonViews to write their updates in OnPhotonSerializeView. Called by a PhotonHandler.</summary>
@@ -2554,6 +2562,11 @@ namespace Photon.Pun
             {
                 PhotonNetwork.NetworkingClient.ConnectToRegionMaster(regionHandler.BestRegion.Code);
             }
+        }
+
+        public static void Instantiate(int name, Vector3 vector3, Quaternion identity, int v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

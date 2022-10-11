@@ -6,6 +6,7 @@ using Photon.Realtime;
 using TMPro;
 using System.Linq;
 using System;
+using ExitGames.Client.Photon;
 
 public class PlayerListingMenu : MonoBehaviourPunCallbacks
 {
@@ -33,10 +34,9 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     private RoomsCanvases _roomsCanvases;
     private bool _ready = false;
 
-    private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
+    //private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
 
-    int[] randomArray = {1,2,3,4}; 
-
+    int[] arrayList = new int[4];
     public void Start()
     {
         ReadyBtn.SetActive(false);
@@ -180,23 +180,32 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             // This room is no longer visible on the room list.
             PhotonNetwork.CurrentRoom.IsVisible = false;
             PhotonNetwork.LoadLevel("Game Scenes/SponTest");
-            /*
-            ArrayList arrayList = new ;
-            for (int i = 0; i < PhotonNetwork.CountOfPlayersInRooms; i++)
+
+
+
+            System.Random random = new System.Random();
+            for (int i = 0; i < 4; i++)
             {
-                arrayList.Add(i);
+
+                arrayList[i] = i;
             }
-            for (int i = 0; i < PhotonNetwork.CountOfPlayersInRooms; i++)
-            {
-                PhotonNetwork.PlayerList[i].CustomProperties["CharNum"] = 
-            }
-            */
-        }
+
+            //[2, 0, 3, 1]
+
+            arrayList = arrayList.OrderBy(x => random.Next()).ToArray();
+
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent(0, arrayList, raiseEventOptions, SendOptions.SendReliable);
             
+
+
+        }
+
+        
+
     }
-
-   
-
+    
+    
     public void OnClick_Settings()
     {
         _settingUI.SetActive(true);
@@ -223,4 +232,5 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             _listings[index].Ready = ready;
         }
     }
+
 }
