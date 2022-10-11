@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
+    public bool timerRunning = false;
+
     [SerializeField] private LayerMask jumpableGround;
 
     private float dirX = 0f;
@@ -60,11 +62,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //Photon pun
-
         //Using float for horizontal movement to support controller inputs
         dirX = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(dirX * (moveSpeed + (1.5f * carrots)), rb.velocity.y);
+        if (carrots > 0) {
+            rb.velocity = new Vector2(dirX * (moveSpeed + (1.5f * carrots)), rb.velocity.y);
+        }
+        else {
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        }
 
         if (Input.GetButtonDown("Jump") && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
@@ -102,10 +107,25 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
+    private void RunTimer(bool timerRunning, float timeRemaining) {
+        if (timerRunning) {
+            if (timeRemaining > 0) {
+                timeRemaining -= Time.deltaTime;
+            }
+            else {
+                timeRemaining = 0;
+                carrots = 0;
+                timerRunning = false;
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Carrot")) {
             Destroy(collision.gameObject);
             carrots++;
+            timerRunning = true;
+            RunTimer(timerRunning, 3f);
         }
     }
 }

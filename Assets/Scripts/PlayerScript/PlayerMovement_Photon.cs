@@ -11,6 +11,9 @@ public class PlayerMovement_Photon : MonoBehaviourPun
     private SpriteRenderer sprite;
     private Animator anim;
 
+    private bool timerRunning = false;
+    private float timeRemaining = 3f;
+
     [SerializeField] private LayerMask jumpableGround;
 
     private float dirX = 0f;
@@ -44,7 +47,7 @@ public class PlayerMovement_Photon : MonoBehaviourPun
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 
-
+        
         /*
         if (_cameraController != null)
         {
@@ -72,7 +75,13 @@ public class PlayerMovement_Photon : MonoBehaviourPun
 
         //Using float for horizontal movement to support controller inputs
         dirX = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(dirX * (moveSpeed + (1.5f * carrots)), rb.velocity.y);
+        if (carrots > 0) {
+            rb.velocity = new Vector2(dirX * (moveSpeed + (1.5f * carrots)), rb.velocity.y);
+            RunTimer();
+        }
+        else {
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -127,10 +136,25 @@ public class PlayerMovement_Photon : MonoBehaviourPun
 
     }
 
+    private void RunTimer() {
+        if (timerRunning) {
+            if (timeRemaining > 0) {
+                timeRemaining -= Time.deltaTime;
+            }
+            else {
+                timeRemaining = 0;
+                carrots = 0;
+                timerRunning = false;
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Carrot")) {
             Destroy(collision.gameObject);
             carrots++;
+            timerRunning = true;
+            timeRemaining = 3f;
         }
     }
 
