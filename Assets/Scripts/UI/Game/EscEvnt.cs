@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EscEvnt : MonoBehaviour
 {
+    /*
     //① 이벤트 생성을 위한 대리자 하나 생성
     public delegate void EventHandler(); //메서드를 여러 개 등록 후 호출 가능
 
@@ -18,4 +19,40 @@ public class EscEvnt : MonoBehaviour
             Esc_Click();    //대리자 형식의 이벤트 수행
         }
     }
+    */
+
+    [SerializeField]
+    private GameObject escUI;
+    private bool CanseeUI;
+
+    private void Start()
+    {
+        escUI.SetActive(false);
+        CanseeUI = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+
+            PressEsc();
+
+        }
+    }
+
+    private void PressEsc()
+    {
+        if (CanseeUI == false)
+        {
+            escUI.SetActive(true);
+            CanseeUI = true;
+        }
+        else
+        {
+            escUI.SetActive(false);
+            CanseeUI = false;
+        }
+    }
+
 }
