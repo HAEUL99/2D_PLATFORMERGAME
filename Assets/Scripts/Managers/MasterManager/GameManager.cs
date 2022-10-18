@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     public GameObject[] obj;
     
-    public TMP_Text text;
-    public TMP_Text text1;
     private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
 
     private void OnEnable()

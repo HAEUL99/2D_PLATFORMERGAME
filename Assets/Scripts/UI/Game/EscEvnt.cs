@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EscEvnt : MonoBehaviour
 {
@@ -46,13 +47,33 @@ public class EscEvnt : MonoBehaviour
         if (CanseeUI == false)
         {
             escUI.SetActive(true);
+            Time.timeScale = 0f;
             CanseeUI = true;
+
         }
         else
         {
             escUI.SetActive(false);
+            Time.timeScale = 1f;
             CanseeUI = false;
         }
+    }
+
+    public void ResumeBtn()
+    {
+        escUI.SetActive(false);
+        Time.timeScale = 1f;
+        CanseeUI = false;
+    }
+
+    public void OptionsBtn()
+    {
+
+    }
+
+    public void LeaveBtn()
+    {
+        SceneManager.LoadScene("Game Scenes/Lobby");
     }
 
 }
