@@ -76,7 +76,7 @@ public class PlayerMovement_Photon : MonoBehaviourPun
         //Using float for horizontal movement to support controller inputs
         dirX = Input.GetAxis("Horizontal");
         if (carrots > 0) {
-            rb.velocity = new Vector2(dirX * (moveSpeed + (1.5f * carrots)), rb.velocity.y);
+            rb.velocity = new Vector2(dirX * (moveSpeed + (2f * carrots)), rb.velocity.y);
             RunTimer();
         }
         else {
