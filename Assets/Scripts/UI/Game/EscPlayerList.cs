@@ -23,4 +23,6 @@ public class EscPlayerList : MonoBehaviour
         _img.sprite = list[player.ActorNumber - 1];
             
     }
+
+    
 }

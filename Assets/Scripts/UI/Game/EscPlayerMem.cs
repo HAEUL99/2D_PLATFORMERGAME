@@ -34,20 +34,7 @@ public class EscPlayerMem : MonoBehaviourPunCallbacks
         
     }
 
-    /*
-    public override void OnPlayerEnteredRoom(Player newPlayer)
-    {
-        Debug.Log("들어옴");
-        EscPlayerList listing = Instantiate(_escPlayerListing, _content);
 
-        if (listing != null)
-        {
-            listing.SetPlayerInfo(newPlayer);
-            _listings.Add(listing);
-
-        }
-    }
-    */
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         int index = _listings.FindIndex(x => x.NickName == otherPlayer.NickName);
