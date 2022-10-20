@@ -12,6 +12,8 @@ public class SettingsMenu : MonoBehaviour
 
     Resolution[] resolutions;
 
+    const string savedOption = "SavedResolution";
+
     void Start() {
         resolutions = Screen.resolutions;
 
@@ -25,8 +27,7 @@ public class SettingsMenu : MonoBehaviour
                 "@" + resolutions[i].refreshRate + "hz";
             options.Add(option);
 
-            if (resolutions[i].width == Screen.currentResolution.width && 
-                resolutions[i].height == Screen.currentResolution.height) {
+            if (option == LoadPrefs()) {
                 currentResolutionIndex = i;
             }
         }
@@ -36,8 +37,20 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
+    public void SavePrefs(string o) {
+        PlayerPrefs.SetString(savedOption, o);
+        PlayerPrefs.Save();
+    }
+
+    public string LoadPrefs() {
+        string res = PlayerPrefs.GetString(savedOption, "800x600@60hz");
+        return res;
+    }
+
     public void SetResolution(int resolutionIndex) {
         Resolution resolution = resolutions[resolutionIndex];
+
+        SavePrefs(resolution.width + "x" + resolution.height);
         
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
