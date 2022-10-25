@@ -33,7 +33,9 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     public List<PlayerListing> _listings = new List<PlayerListing>();
     private RoomsCanvases _roomsCanvases;
     private bool _ready = false;
-
+    string nameOfTheme;
+    int numOfTheme;
+    //private List<int> sceneList;
     //private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
 
     int[] arrayList = new int[4];
@@ -179,10 +181,37 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.IsOpen = false;
             // This room is no longer visible on the room list.
             PhotonNetwork.CurrentRoom.IsVisible = false;
-            PhotonNetwork.LoadLevel("Game Scenes/Forest");
+
+            numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
+            Debug.Log($"numOfTheme: {numOfTheme}");
+
+            //int numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
+            
+
+            //_numTheme = 0 rabbit
+            //_numTheme = 1 City
+            //_numTheme = 2 Fox
+            //_numTheme = 3 medieval
+            switch (numOfTheme)
+            {
+                case 0:
+                    nameOfTheme = "Forest";
+                    break;
+                case 1:
+                    nameOfTheme = "City";
+                    break;
+                case 2:
+                    nameOfTheme = "Fox";
+                    break;
+                case 3:
+                    nameOfTheme = "Medieval";
+                    break;
+            }
+            
+            PhotonNetwork.LoadLevel($"Game Scenes/{nameOfTheme}");
 
 
-
+            /*
             System.Random random = new System.Random();
             for (int i = 0; i < 4; i++)
             {
@@ -195,8 +224,8 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             arrayList = arrayList.OrderBy(x => random.Next()).ToArray();
 
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-            PhotonNetwork.RaiseEvent(0, arrayList, raiseEventOptions, SendOptions.SendReliable);
-            
+            PhotonNetwork.RaiseEvent(0, raiseEventOptions, SendOptions.SendReliable);
+            */
 
 
         }

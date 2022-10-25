@@ -28,15 +28,6 @@ public class PlayerMovement_Photon : MonoBehaviourPun
 
     private enum movementState { idle, skipping, jumping, falling }
 
-    /*
-    private void Awake()
-    {
-        if (photonView.IsMine)
-        {
-            PlayerSetting.LocalPlayerInstance = this.gameObject;
-        }
-    }
-    */
 
     // Start is called before the first frame update
     private void Start()
@@ -48,20 +39,6 @@ public class PlayerMovement_Photon : MonoBehaviourPun
         anim = GetComponent<Animator>();
 
         
-        /*
-        if (_cameraController != null)
-        {
-            if (photonView.IsMine)
-            {
-                Debug.Log("photonView.IsMine");
-                _cameraController.OnStartFollowing(this.gameObject);
-            }
-        }
-        else
-        {
-            Debug.LogError("<Color=Red><a>Missing</a></Color> CameraWork Component on playerPrefab.", this);
-        }
-        */
     }
 
     // Update is called once per frame
@@ -157,6 +134,8 @@ public class PlayerMovement_Photon : MonoBehaviourPun
             timeRemaining = 3f;
         }
     }
+
+   
 
     [PunRPC]
     private void RPC_ChangeFlipState(bool flipStatus)

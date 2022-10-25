@@ -44,6 +44,9 @@ MonoBehaviour:
   - RPC_RandomCharact
   - RPC_charRandomAssign
   - RPC_charAssign
+  - RPC_isFinished
+  - RPC_IsFunFinished
+  - RPC_LoadNextScene
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

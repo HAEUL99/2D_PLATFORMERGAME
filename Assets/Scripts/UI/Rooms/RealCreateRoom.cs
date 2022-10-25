@@ -16,6 +16,7 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
     private GameObject[] BiggerImg = new GameObject[4];
     [SerializeField]
     private GameObject WarnImg;
+    //private ArrayList sceneList = new ArrayList();
 
     public void OnClick_CreateRoomMenu()
     {
@@ -27,9 +28,8 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
         {
             RoomOptions options = new RoomOptions();
             options.MaxPlayers = 4;
-            options.CustomRoomProperties = new Hashtable() { { "Theme", _choosetheme._numTheme } };
-
-            Debug.Log($"_choosetheme._numTheme: {_choosetheme._numTheme}");
+            //sceneList.Add(_choosetheme._numTheme);
+            options.CustomRoomProperties = new Hashtable() { { "Theme", _choosetheme._numTheme} };
 
             // default roomname = host name
             PhotonNetwork.JoinOrCreateRoom(PlayerSetting.NickName, options, TypedLobby.Default);
@@ -55,7 +55,6 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
 
-        Debug.Log("Created room successfully.");
         _roomUI.SetActive(true);
         
         

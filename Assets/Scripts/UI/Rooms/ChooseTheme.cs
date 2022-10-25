@@ -34,7 +34,7 @@ public class ChooseTheme : MonoBehaviour
             ThemeImg[i].SetActive(false);
         }
 
-        _numTheme = 1;
+        _numTheme = 2;
         ThemeImg[_numTheme].SetActive(true);
     }
     public void OnClick_CityTheme()
@@ -44,7 +44,7 @@ public class ChooseTheme : MonoBehaviour
             ThemeImg[i].SetActive(false);
         }
 
-        _numTheme =2;
+        _numTheme =1;
         ThemeImg[_numTheme].SetActive(true);
     }
     public void OnClick_MedievalTheme()

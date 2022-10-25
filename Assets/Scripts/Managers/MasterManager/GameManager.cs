@@ -9,11 +9,11 @@ using ExitGames.Client.Photon;
 using System.Collections.Generic;
 using TMPro;
 
-public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
+public class GameManager : MonoBehaviourPunCallbacks
 {
     public GameObject[] obj;
     
-    private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
+    //private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
 
     private void OnEnable()
     {
@@ -25,20 +25,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IOnEventCallback
         PhotonNetwork.RemoveCallbackTarget(this);
     }
 
-
-
-
-
-    public void OnEvent(EventData photonEvent)
+    private void Start()
     {
-        if (photonEvent.Code == 0)
-        {
-            
-            PhotonNetwork.Instantiate(obj[PhotonNetwork.LocalPlayer.ActorNumber -1].name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
-
-
-        }
+        PhotonNetwork.Instantiate(obj[PhotonNetwork.LocalPlayer.ActorNumber - 1].name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
     }
+
 
 
 }
