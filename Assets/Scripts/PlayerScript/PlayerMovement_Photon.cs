@@ -63,6 +63,7 @@ public class PlayerMovement_Photon : MonoBehaviourPun
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            FindObjectOfType<AudioManager>().Play("Jump");
         }
 
         UpdateAnimationState();
