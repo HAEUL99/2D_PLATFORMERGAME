@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class FinishEvnt : MonoBehaviourPunCallbacks
+public class FinishEvnt : MonoBehaviourPun
 {
     [SerializeField]
     private GameObject resultUi;
@@ -30,14 +30,16 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
     }
 
 
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             winnerNickname = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
             IsFinished();
-            //Invoke("NextScene", 3f);
-            NextScene();
+            Invoke("NextScene", 3f);
+
         }
     }
 
@@ -73,7 +75,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
                 //show Winner,
                 resultUi.SetActive(true);
                 winnerImg.GetComponent<Image>().sprite = playersImg[playerInfo.Value.ActorNumber - 1];
-                Time.timeScale = 0f;
+      
 
                 
 
@@ -108,7 +110,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
 
         PhotonNetwork.LoadLevel($"Game Scenes/{nameOfTheme}");
 
-        Time.timeScale = 1f;
+      
     }
 
 

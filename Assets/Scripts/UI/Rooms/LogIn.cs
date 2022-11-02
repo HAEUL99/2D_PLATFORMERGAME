@@ -26,7 +26,7 @@ public class LogIn : MonoBehaviour
 
     private void Start()
     {
-        notice = "Are you sure using NickName: ";
+        notice = "Are you sure using NickName: \r\n";
     }
 
 
