@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trap
   - Carrot
+  - Moving Platform
   layers:
   - Default
   - TransparentFX
@@ -42,6 +43,9 @@ TagManager:
   m_SortingLayers:
   - name: Hidden
     uniqueID: 1778411383
+    locked: 0
+  - name: Behind BG
+    uniqueID: 4017137229
     locked: 0
   - name: Background
     uniqueID: 1401449553
