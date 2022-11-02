@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -2647,7 +2647,6 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      skyline-b_119: -1537394864
       skyline-b_15: 873880660
       skyline-b_45: -2075853104
       skyline-b_48: -104164368
@@ -2659,8 +2658,9 @@ TextureImporter:
       skyline-b_97: -2037371773
       skyline-b_81: 331364925
       skyline-b_56: 1749467049
-      skyline-b_109: -660270530
+      skyline-b_113: -974370565
       skyline-b_103: -307604421
+      skyline-b_109: -660270530
       skyline-b_14: 1654396015
       skyline-b_19: -159152112
       skyline-b_62: 1468504002
@@ -2674,20 +2674,19 @@ TextureImporter:
       skyline-b_43: 554201737
       skyline-b_104: 161104550
       skyline-b_6: -1631294105
-      skyline-b_113: -974370565
       skyline-b_92: 416146744
       skyline-b_68: 275777584
       skyline-b_51: -1918398219
       skyline-b_69: 178550819
-      skyline-b_40: -1038488230
       skyline-b_106: 4020080
+      skyline-b_40: -1038488230
       skyline-b_55: 1189151028
       skyline-b_95: 1883517477
       skyline-b_23: -2138818154
       skyline-b_26: 1384013528
-      skyline-b_66: -1397245923
-      skyline-b_89: 1716638100
       skyline-b_78: -1054556489
+      skyline-b_89: 1716638100
+      skyline-b_66: -1397245923
       skyline-b_30: -2060068866
       skyline-b_60: -1244393149
       skyline-b_93: 1825890738
@@ -2765,6 +2764,7 @@ TextureImporter:
       skyline-b_91: 1298329364
       skyline-b_85: -1888547978
       skyline-b_50: -1450334579
+      skyline-b_119: -1537394864
       skyline-b_4: -1590676452
       skyline-b_32: -1840773843
   spritePackingTag: 
