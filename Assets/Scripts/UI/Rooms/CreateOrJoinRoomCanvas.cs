@@ -11,7 +11,19 @@ public class CreateOrJoinRoomCanvas : MonoBehaviour
     [SerializeField]
     private RoomListingMenu _roomListingsMenu;
 
+
+    [SerializeField]
+    private GameObject _createUI;
+    [SerializeField]
+    private GameObject _currentRoomCanvas;
+
     private RoomsCanvases _roomsCanvases;
+
+    public void Start()
+    {
+        _createUI.SetActive(false);
+        _currentRoomCanvas.SetActive(false);
+    }
 
     public void FirstInitialize(RoomsCanvases canvases)
     {
@@ -25,4 +37,8 @@ public class CreateOrJoinRoomCanvas : MonoBehaviour
        SceneManager.LoadScene("Main Menu");
     }
 
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
 }

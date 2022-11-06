@@ -35,25 +35,29 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     private bool _ready = false;
     string nameOfTheme;
     int numOfTheme;
-    //private List<int> sceneList;
-    //private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
 
-    int[] arrayList = new int[4];
-    public void Start()
+
+    public void ShowUIEachPlayer()
     {
         ReadyBtn.SetActive(false);
         GameStartBtn.SetActive(false);
         _settingUI.SetActive(false);
-        if (!PhotonNetwork.IsMasterClient)
+        _settingsBtn.SetActive(false);
+
+        if (PhotonNetwork.IsMasterClient == true)
         {
-            ReadyBtn.SetActive(true);
-            _settingsBtn.SetActive(false);
+
+            GameStartBtn.SetActive(true);
+            //ReadyBtn.SetActive(false);
+            _settingsBtn.SetActive(true);
         }
         else
         {
 
-            GameStartBtn.SetActive(true);
-            _settingsBtn.SetActive(true);
+            ReadyBtn.SetActive(true);
+            
+
+            
         }
 
         
@@ -64,6 +68,10 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
     {
         
         base.OnEnable();
+
+        ShowUIEachPlayer();
+
+
         GetCurrentRoomPlayer();
         SetReadyUp(false);
         
@@ -200,12 +208,16 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
                 case 1:
                     nameOfTheme = "City";
                     break;
+
+                    /*
                 case 2:
                     nameOfTheme = "Fox";
                     break;
                 case 3:
                     nameOfTheme = "Medieval";
                     break;
+
+                    */
             }
             
             PhotonNetwork.LoadLevel($"Game Scenes/{nameOfTheme}");

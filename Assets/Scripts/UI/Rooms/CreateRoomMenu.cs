@@ -38,6 +38,7 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
     public void OnCreateUI()
     {
         _createUI.SetActive(true);
+        gameObject.SetActive(false);
 
     }
 
@@ -50,5 +51,6 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
     public void OnClick_Back()
     {
         SceneManager.LoadScene("Lobby");
+
     }
 }

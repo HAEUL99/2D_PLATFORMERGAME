@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class LeaveRoomMenu : MonoBehaviour
 {
-
+    [SerializeField]
+    private GameObject _createRoomMenu;
     private RoomsCanvases _roomsCanvases;
 
     public void FirstInitialize(RoomsCanvases canvases)
@@ -17,6 +18,7 @@ public class LeaveRoomMenu : MonoBehaviour
     {
         PhotonNetwork.LeaveRoom(true);
         _roomsCanvases.CurrentRoomCanvas.Hide();
+        _createRoomMenu.SetActive(true);
     }
 
     

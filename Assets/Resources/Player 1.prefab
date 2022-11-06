@@ -440,7 +440,6 @@ MonoBehaviour:
     m_Bits: 64
   moveSpeed: 7
   jumpForce: 14
-  _cameraController: {fileID: 0}
 --- !u!114 &2846833855514844099
 MonoBehaviour:
   m_ObjectHideFlags: 0

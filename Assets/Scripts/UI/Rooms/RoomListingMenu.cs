@@ -14,15 +14,20 @@ public class RoomListingMenu : MonoBehaviourPunCallbacks
 
     private List<RoomListing> _listings = new List<RoomListing>();
     private RoomsCanvases _roomsCanvases;
+    private CurrentRoomCanvas _currentRoomCanvas;
+
 
     public void FirstInitialize(RoomsCanvases canvases)
     {
         _roomsCanvases = canvases;
     }
 
+  
+
     public override void OnJoinedRoom()
     {
         _roomsCanvases.CurrentRoomCanvas.Show();
+        _roomsCanvases.CreateOrJoinRoomCanvas.Hide();
         _content.DestroyChildern();
     }
 
@@ -53,6 +58,7 @@ public class RoomListingMenu : MonoBehaviourPunCallbacks
                     if (listing != null)
                     {
                         listing.SetRoomInfo(info);
+                        //_roomListing.themeName = (int)info.CustomProperties;
                         _listings.Add(listing);
                     }
 

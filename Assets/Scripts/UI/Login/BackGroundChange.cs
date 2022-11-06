@@ -39,25 +39,27 @@ public class BackGroundChange : MonoBehaviour
     {
         IsLocked = true;
 
-        PreviousInfo.instancepreviousInfo.numOfImg = (_firstImg + 1) % 3;
+        
         _background[_firstImg].SetActive(true);
         _background[(_firstImg + 1)%3].SetActive(false);
         _background[(_firstImg + 2) % 3].SetActive(false);
+       
         yield return new WaitForSeconds(8f);
-
         PreviousInfo.instancepreviousInfo.numOfImg = (_firstImg + 1) % 3;
+
         _background[_firstImg].SetActive(false);
         _background[(_firstImg + 1) % 3].SetActive(true);
         _background[(_firstImg + 2) % 3].SetActive(false);
-
+        
         yield return new WaitForSeconds(8f);
-
         PreviousInfo.instancepreviousInfo.numOfImg = (_firstImg + 1) % 3;
+
         _background[_firstImg].SetActive(false);
         _background[(_firstImg + 1) % 3].SetActive(false);
         _background[(_firstImg + 2) % 3].SetActive(true);
-
+        
         yield return new WaitForSeconds(8f);
+        PreviousInfo.instancepreviousInfo.numOfImg = (_firstImg + 1) % 3;
         IsLocked = false;
 
     }

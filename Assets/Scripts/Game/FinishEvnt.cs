@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
@@ -12,10 +13,13 @@ public class FinishEvnt : MonoBehaviourPun
     [SerializeField]
     private GameObject resultUi;
     [SerializeField]
+    private GameObject countDowntxt;
+    [SerializeField]
     private GameObject winnerImg;
     [SerializeField]
     private Sprite[] playersImg;
 
+    private TextMeshProUGUI countTxt;
 
     string winnerNickname;
     int numOfTheme;
@@ -24,7 +28,7 @@ public class FinishEvnt : MonoBehaviourPun
     private void Start()
     {
 
-
+        countTxt = countDowntxt.GetComponent<TextMeshProUGUI>();
         resultUi.SetActive(false);
         
     }
@@ -38,7 +42,8 @@ public class FinishEvnt : MonoBehaviourPun
         {
             winnerNickname = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
             IsFinished();
-            Invoke("NextScene", 3f);
+            StartCoroutine(CountDown());
+            //Invoke("NextScene", 3f);
 
         }
     }
@@ -53,6 +58,17 @@ public class FinishEvnt : MonoBehaviourPun
 
     }
 
+    IEnumerator CountDown()
+    {
+        countTxt.text = "Move to next scene after 3 seconds";
+        yield return new WaitForSeconds(1f);
+        countTxt.text = "Move to next scene after 2 seconds";
+        yield return new WaitForSeconds(1f);
+        countTxt.text = "Move to next scene after 1 seconds";
+        yield return new WaitForSeconds(1f);
+
+        NextScene();
+    }
 
 
     void NextScene()
@@ -92,7 +108,10 @@ public class FinishEvnt : MonoBehaviourPun
         resultUi.SetActive(false);
         numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
 
-        switch ((numOfTheme + 1) % 3)
+        
+
+        
+        switch ((numOfTheme + 1) % 2)
         {
             case 0:
                 nameOfTheme = "Forest";
@@ -100,14 +119,16 @@ public class FinishEvnt : MonoBehaviourPun
             case 1:
                 nameOfTheme = "City";
                 break;
+            /*
             case 2:
                 nameOfTheme = "Fox";
                 break;
             case 3:
                 nameOfTheme = "Medieval";
                 break;
+            */
         }
-
+        
         PhotonNetwork.LoadLevel($"Game Scenes/{nameOfTheme}");
 
       

@@ -24,7 +24,7 @@ public class PlayerMovement_Photon : MonoBehaviourPun
 
 
     public static GameObject LocalPlayerInstance;
-    public CameraController _cameraController;
+    //public CameraController _cameraController;
 
     private enum movementState { idle, skipping, jumping, falling }
 
