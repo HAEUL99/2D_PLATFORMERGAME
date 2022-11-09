@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 4550723353157130173}
   - component: {fileID: 1220187229747154192}
   - component: {fileID: -1611069859460097543}
+  - component: {fileID: -9108652125615488963}
+  - component: {fileID: 4484449770395934911}
+  - component: {fileID: 5556826148604421106}
   m_Layer: 0
   m_Name: CityPlayer
   m_TagString: Untagged
@@ -234,6 +237,47 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3857284, y: 3.8182056}
   m_EdgeRadius: 0
+--- !u!114 &-9108652125615488963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312134411970715973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc075aeebc21e40a282793598c0a97ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 64
+  moveSpeed: 7
+  jumpForce: 14
+--- !u!114 &4484449770395934911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312134411970715973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18bf098cbdbbf3438ea1a47e3479721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5556826148604421106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312134411970715973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7ce50bfd350ef49ad88dd799dcf26f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1545375895646974564
 GameObject:
   m_ObjectHideFlags: 0

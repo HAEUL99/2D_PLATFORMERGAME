@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 2154749031466128002}
   - component: {fileID: 2154749031466128061}
   - component: {fileID: 4580508254983484724}
+  - component: {fileID: 6202986400384423388}
+  - component: {fileID: 8278889769173507724}
+  - component: {fileID: 3338909378478539641}
   m_Layer: 0
   m_Name: CityPlayer2
   m_TagString: Untagged
@@ -128,3 +131,44 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &6202986400384423388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312134411970715973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc075aeebc21e40a282793598c0a97ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 64
+  moveSpeed: 7
+  jumpForce: 14
+--- !u!114 &8278889769173507724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312134411970715973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18bf098cbdbbf3438ea1a47e3479721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3338909378478539641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312134411970715973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7ce50bfd350ef49ad88dd799dcf26f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
