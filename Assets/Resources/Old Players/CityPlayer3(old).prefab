@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6580646087681562055}
   - component: {fileID: 2154749031466128002}
   - component: {fileID: 2154749031466128061}
-  - component: {fileID: 4580508254983484724}
-  - component: {fileID: 6202986400384423388}
-  - component: {fileID: 8278889769173507724}
-  - component: {fileID: 3338909378478539641}
+  - component: {fileID: 6908809664798560009}
+  - component: {fileID: 8854370338646593478}
+  - component: {fileID: 4146763464060979085}
+  - component: {fileID: -3737399327240632461}
   m_Layer: 0
-  m_Name: CityPlayer2
+  m_Name: CityPlayer3(old)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3a557a04c3b114da9adf0f8308d21f87, type: 3}
-  m_Color: {r: 0.45490196, g: 1, b: 0.4, a: 1}
+  m_Color: {r: 0.30588236, g: 0.4392157, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -109,7 +109,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4580508254983484724
+--- !u!114 &6908809664798560009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &6202986400384423388
+--- !u!114 &8854370338646593478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
     m_Bits: 64
   moveSpeed: 7
   jumpForce: 14
---- !u!114 &8278889769173507724
+--- !u!114 &4146763464060979085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d18bf098cbdbbf3438ea1a47e3479721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3338909378478539641
+--- !u!114 &-3737399327240632461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

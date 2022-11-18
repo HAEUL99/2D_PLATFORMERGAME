@@ -136,13 +136,13 @@ public class PlayerMovement_Photon : MonoBehaviourPun
         }
         //Need to include this in order to allow the player to move with the platform
         if (collision.gameObject.CompareTag("Moving Platform")) {
-            collision.gameObject.transform.SetParent(transform);
+            collision.GetComponent<Collider>().transform.SetParent(transform);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Moving Platform")) {
-            collision.gameObject.transform.SetParent(null);
+            collision.GetComponent<Collider>().transform.SetParent(null);
         }
     }
 
