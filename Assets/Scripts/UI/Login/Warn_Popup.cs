@@ -9,6 +9,7 @@ public class Warn_Popup : MonoBehaviour
 
     public void Click_OK()
     {
+        FindObjectOfType<AudioManager>().Play("clickbtn");
         gameObject.SetActive(false);
         _accounttxt.SetActive(true);
     }

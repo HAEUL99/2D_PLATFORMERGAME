@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class RealCreateRoom : MonoBehaviourPunCallbacks
@@ -22,6 +23,12 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject WarnImg;
     //private ArrayList sceneList = new ArrayList();
+
+    [SerializeField]
+    private ChooseTheme chooseTheme;
+    [SerializeField]
+    private Sprite[] change_img = new Sprite[2];
+    private Image startImg;
 
 
     private void Start()
@@ -66,6 +73,8 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
         }
 
 
+
+
     }
 
     public void OnClick_Back()
@@ -91,6 +100,8 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
         _createRoombtn.SetActive(true);
 
         _closedUIbtn.SetActive(true);
+
+        
     }
 
 

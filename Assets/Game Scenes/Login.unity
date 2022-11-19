@@ -2437,8 +2437,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668708722}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0067, y: -0.1204, z: 0}
-  m_LocalScale: {x: 1.865866, y: 3.0154872, z: 1}
+  m_LocalPosition: {x: 0.0518, y: 0.1943, z: 0}
+  m_LocalScale: {x: 0.30415326, y: 0.5411835, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2069624947}
@@ -2752,6 +2752,7 @@ MonoBehaviour:
   _markednickName: 
   warn_PopupObject: {fileID: 2009342036}
   EnterName_txt: {fileID: 696011917}
+  IsClicked: 0
 --- !u!1 &2009342036
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,3 +3159,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2074447261}
   m_CullTransparentMesh: 1
+--- !u!4 &6974831600314474922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6974831600314474924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6974831600314474923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6974831600314474924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c264c078cc915914f979bb5831a4c34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: clickbtn
+    clip: {fileID: 8300000, guid: b71540cf49a8c7d4e8657570ce279a0f, type: 3}
+    volume: 0.65
+    pitch: 2
+    loop: 0
+    source: {fileID: 0}
+--- !u!1 &6974831600314474924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6974831600314474922}
+  - component: {fileID: 6974831600314474923}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1

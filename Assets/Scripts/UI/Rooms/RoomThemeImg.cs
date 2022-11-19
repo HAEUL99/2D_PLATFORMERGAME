@@ -15,19 +15,14 @@ public class RoomThemeImg : MonoBehaviour
     
     
 
-    // Start is called before the first frame update
     void Start()
     {
         startImg = gameObject.GetComponent<Image>();
 
         int numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
-        //Debug.Log($"chooseTheme._numTheme: {chooseTheme._numTheme}");
+        Debug.Log($"numOfTheme: {numOfTheme}");
         startImg.sprite = change_img[numOfTheme];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

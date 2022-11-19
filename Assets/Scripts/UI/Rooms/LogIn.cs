@@ -22,10 +22,13 @@ public class LogIn : MonoBehaviour
     private GameObject EnterName_txt;
     private string notice;
 
+    public bool IsClicked;
+
 
 
     private void Start()
     {
+        IsClicked = false;
         notice = "Are you sure using NickName: \r\n";
     }
 
@@ -42,10 +45,21 @@ public class LogIn : MonoBehaviour
 
 
 
+    private void Update()
+    {
+        if (IsClicked == true)
+        {
+            IsClicked = !IsClicked;
+            FindObjectOfType<AudioManager>().Play("clickbtn");
+            
+        }
 
+    }
     public void Click_Next()
     {
+        IsClicked = !IsClicked;
         SetNickName();
+        
         if (string.IsNullOrEmpty(PlayerSetting.NickName))
         {
             Debug.Log("PhotonNetwork.NickName is Empty");

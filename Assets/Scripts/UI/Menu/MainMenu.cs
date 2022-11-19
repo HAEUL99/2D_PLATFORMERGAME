@@ -8,6 +8,9 @@ public class MainMenu : MonoBehaviour
    
    public void PlayGame() {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        SceneManager.LoadScene("Lobby");
+        /*
         if (PreviousInfo.instancepreviousInfo.numOfImg == 0)
         {
             SceneManager.LoadScene("LoadingScenFox");
@@ -20,6 +23,7 @@ public class MainMenu : MonoBehaviour
         {
             SceneManager.LoadScene("LoadingScenBunny");
         }
+        */
     }
 
    public void QuitGame() {
