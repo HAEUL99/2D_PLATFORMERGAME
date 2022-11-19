@@ -6,32 +6,29 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
    
-   public void PlayGame() {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+   public void PlayGame()
+    {
+        FindObjectOfType<AudioManager>().Play("clickbtn");
         SceneManager.LoadScene("Lobby");
-        /*
-        if (PreviousInfo.instancepreviousInfo.numOfImg == 0)
-        {
-            SceneManager.LoadScene("LoadingScenFox");
-        }
-        if (PreviousInfo.instancepreviousInfo.numOfImg == 1)
-        {
-            SceneManager.LoadScene("LoadingScenCity");
-        }
-        if (PreviousInfo.instancepreviousInfo.numOfImg == 2)
-        {
-            SceneManager.LoadScene("LoadingScenBunny");
-        }
-        */
     }
 
-   public void QuitGame() {
+   public void QuitGame()
+     {
 
-        Debug.Log("QUIT");
+        FindObjectOfType<AudioManager>().Play("clickbtn");
+        Invoke("quitInvoke", 0.3f);
+        
+     }
+
+    public void Option()
+    {
+        FindObjectOfType<AudioManager>().Play("clickbtn");
+    }
+
+    public void quitInvoke()
+    {
         Application.Quit();
-   }
-
+    }
 
 
 }

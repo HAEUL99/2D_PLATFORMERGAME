@@ -20,7 +20,6 @@ public class RoomThemeImg : MonoBehaviour
         startImg = gameObject.GetComponent<Image>();
 
         int numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
-        Debug.Log($"numOfTheme: {numOfTheme}");
         startImg.sprite = change_img[numOfTheme];
     }
 

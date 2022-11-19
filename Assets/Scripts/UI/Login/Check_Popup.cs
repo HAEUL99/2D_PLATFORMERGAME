@@ -15,7 +15,12 @@ public class Check_Popup : MonoBehaviour
     public void OnClick_Yes()
     {
         FindObjectOfType<AudioManager>().Play("clickbtn");
-        //PhotonNetwork.GameVersion = "0.0.0";
+        Invoke("sceneLoad", 0.3f);
+        
+    }
+
+    void sceneLoad()
+    {
         SceneManager.LoadScene("Main Menu");
     }
 

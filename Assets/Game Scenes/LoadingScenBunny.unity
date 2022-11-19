@@ -498,8 +498,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622941103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0067, y: -0.1204, z: 0}
-  m_LocalScale: {x: 1.865866, y: 3.0154872, z: 1}
+  m_LocalPosition: {x: 0.0436, y: 0.0724, z: 0}
+  m_LocalScale: {x: 0.29683718, y: 0.43753713, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 347969085}
@@ -848,7 +848,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ef7128e28a64c0f91bc17b3a952480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressbar: {fileID: 1748791321}
+  _canvas: {fileID: 0}
+  _background: {fileID: 0}
+  _createUI: {fileID: 0}
+  _currentRoomCanvas: {fileID: 0}
 --- !u!1 &1552730450
 GameObject:
   m_ObjectHideFlags: 0

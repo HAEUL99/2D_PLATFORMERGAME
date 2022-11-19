@@ -44,7 +44,7 @@ public class EscEvnt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
+            FindObjectOfType<AudioManager>().Play("clickbtn");
             PressEsc();
 
         }
@@ -54,6 +54,7 @@ public class EscEvnt : MonoBehaviour
     {
         if (CanseeUI == false)
         {
+            FindObjectOfType<AudioManager>().Play("clickbtn");
             escUI.SetActive(true);
             Time.timeScale = 0f;
             CanseeUI = true;
@@ -61,6 +62,7 @@ public class EscEvnt : MonoBehaviour
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("clickbtn");
             escUI.SetActive(false);
             Time.timeScale = 1f;
             CanseeUI = false;

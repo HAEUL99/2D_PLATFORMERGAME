@@ -44,7 +44,7 @@ public class LogIn : MonoBehaviour
     }
 
 
-
+    /*
     private void Update()
     {
         if (IsClicked == true)
@@ -55,9 +55,11 @@ public class LogIn : MonoBehaviour
         }
 
     }
+    */
     public void Click_Next()
     {
-        IsClicked = !IsClicked;
+        //IsClicked = !IsClicked;
+        FindObjectOfType<AudioManager>().Play("clickbtn");
         SetNickName();
         
         if (string.IsNullOrEmpty(PlayerSetting.NickName))

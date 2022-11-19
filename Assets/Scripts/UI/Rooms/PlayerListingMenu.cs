@@ -49,7 +49,7 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
 
             GameStartBtn.SetActive(true);
             //ReadyBtn.SetActive(false);
-            _settingsBtn.SetActive(true);
+            //_settingsBtn.SetActive(true);
         }
         else
         {
@@ -191,7 +191,7 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.IsVisible = false;
 
             numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
-            Debug.Log($"numOfTheme: {numOfTheme}");
+
 
             //int numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
             

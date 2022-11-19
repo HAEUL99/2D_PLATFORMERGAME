@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LeaveRoomMenu : MonoBehaviour
 {
@@ -17,8 +18,9 @@ public class LeaveRoomMenu : MonoBehaviour
     public void OnClick_LeaveRoom()
     {
         PhotonNetwork.LeaveRoom(true);
-        _roomsCanvases.CurrentRoomCanvas.Hide();
-        _createRoomMenu.SetActive(true);
+        //_roomsCanvases.CurrentRoomCanvas.Hide();
+        //_createRoomMenu.SetActive(true);
+        SceneManager.LoadScene("Game Scenes/Lobby");
     }
 
     
