@@ -9,10 +9,14 @@ public class MainMenu : MonoBehaviour
    public void PlayGame()
     {
         FindObjectOfType<AudioManager>().Play("clickbtn");
-        SceneManager.LoadScene("Lobby");
+        Invoke("Play", 0.3f);
     }
 
-   public void QuitGame()
+    public void Play()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+    public void QuitGame()
      {
 
         FindObjectOfType<AudioManager>().Play("clickbtn");

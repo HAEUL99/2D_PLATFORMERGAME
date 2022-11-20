@@ -3522,6 +3522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 133027580}
   - component: {fileID: 133027579}
+  - component: {fileID: 133027581}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3546,6 +3547,7 @@ MonoBehaviour:
   - {fileID: 5905975718081661427, guid: 08fbddf206da5a148972fd8bc9365a25, type: 3}
   - {fileID: 5905975718081661427, guid: 786d1ccdcce1f1e4c8e45a8c52e8cd40, type: 3}
   - {fileID: 5905975718081661427, guid: 5b93a160b138c8445977d8eca2cf35a9, type: 3}
+  Ischecked: 0
 --- !u!4 &133027580
 Transform:
   m_ObjectHideFlags: 0
@@ -3561,6 +3563,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &133027581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133027578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &136090036
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,7 +3928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -108}
+  m_AnchoredPosition: {x: 0, y: -129.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &204524570

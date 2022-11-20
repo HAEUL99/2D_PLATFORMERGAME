@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -18,6 +19,8 @@ public class FinishEvnt : MonoBehaviourPun
     private GameObject winnerImg;
     [SerializeField]
     private Sprite[] playersImg;
+
+    //public GameObject[] obj;
 
     private TextMeshProUGUI countTxt;
 
@@ -66,18 +69,16 @@ public class FinishEvnt : MonoBehaviourPun
         countTxt.text = "Move to next scene after 2 seconds";
         yield return new WaitForSeconds(1f);
         countTxt.text = "Move to next scene after 1 seconds";
-        yield return new WaitForSeconds(2f);
-
+        yield return new WaitForSeconds(1f);
         NextScene();
     }
 
 
     void NextScene()
     {
-        
 
-        //yield return new WaitForSeconds(f);
-        base.photonView.RPC("RPC_LoadNextScene", RpcTarget.All);
+        Debug.Log("NextScene");
+        base.photonView.RPC("RPC_LoadNextScene", RpcTarget.AllViaServer);
 
 
     }
@@ -108,9 +109,6 @@ public class FinishEvnt : MonoBehaviourPun
     {
         resultUi.SetActive(false);
         numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
-
-        
-
         
         switch ((numOfTheme + 1) % 2)
         {
@@ -122,22 +120,10 @@ public class FinishEvnt : MonoBehaviourPun
                 nameOfTheme = "City";
                 //nameOfTheme = "LoadingScenCity";
                 break;
-            /*
-            case 2:
-                nameOfTheme = "Fox";
-                break;
-            case 3:
-                nameOfTheme = "Medieval";
-                break;
-            */
         }
 
+        SceneManager.LoadScene($"Game Scenes/{nameOfTheme}");
 
-        //PhotonNetwork.Destroy(GameManager.LocalPlayerInstance);
-
-        PhotonNetwork.LoadLevel($"Game Scenes/{nameOfTheme}");
-
-      
     }
 
 
