@@ -12,7 +12,7 @@ using TMPro;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public GameObject[] obj;
-    
+    public static GameObject LocalPlayerInstance;
     //private ExitGames.Client.Photon.Hashtable _myCustomProperties = new ExitGames.Client.Photon.Hashtable();
 
     private void OnEnable()
@@ -27,8 +27,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        PhotonNetwork.Instantiate(obj[PhotonNetwork.LocalPlayer.ActorNumber - 1].name, gameObject.GetComponent<Transform>().position, Quaternion.identity, 0);
+        if(LocalPlayerInstance == null)
+            LocalPlayerInstance = PhotonNetwork.Instantiate(obj[PhotonNetwork.LocalPlayer.ActorNumber - 1].name, gameObject.GetComponent<Transform>().position, Quaternion.identity, 0);
     }
+
+    
 
 
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class EscEvnt : MonoBehaviour
 {
@@ -92,7 +93,9 @@ public class EscEvnt : MonoBehaviour
 
     public void LeaveBtn()
     {
+        PhotonNetwork.LeaveRoom(true);
         SceneManager.LoadScene("Game Scenes/Lobby");
+
     }
 
 }

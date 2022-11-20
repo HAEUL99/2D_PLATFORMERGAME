@@ -41,6 +41,7 @@ public class FinishEvnt : MonoBehaviourPun
         if (collision.gameObject.CompareTag("Player"))
         {
             winnerNickname = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
+            Debug.Log($"winnerNickname: {winnerNickname}");
             IsFinished();
             StartCoroutine(CountDown());
             //Invoke("NextScene", 3f);
@@ -65,7 +66,7 @@ public class FinishEvnt : MonoBehaviourPun
         countTxt.text = "Move to next scene after 2 seconds";
         yield return new WaitForSeconds(1f);
         countTxt.text = "Move to next scene after 1 seconds";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         NextScene();
     }
@@ -115,9 +116,11 @@ public class FinishEvnt : MonoBehaviourPun
         {
             case 0:
                 nameOfTheme = "Forest";
+                //nameOfTheme = "LoadingScenBunny";
                 break;
             case 1:
                 nameOfTheme = "City";
+                //nameOfTheme = "LoadingScenCity";
                 break;
             /*
             case 2:
@@ -128,7 +131,10 @@ public class FinishEvnt : MonoBehaviourPun
                 break;
             */
         }
-        
+
+
+        //PhotonNetwork.Destroy(GameManager.LocalPlayerInstance);
+
         PhotonNetwork.LoadLevel($"Game Scenes/{nameOfTheme}");
 
       

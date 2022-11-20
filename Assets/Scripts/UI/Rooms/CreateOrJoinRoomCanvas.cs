@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,8 +34,9 @@ public class CreateOrJoinRoomCanvas : MonoBehaviour
     }
 
     public void LobbyBack() {
-       //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-       SceneManager.LoadScene("Main Menu");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void Hide()

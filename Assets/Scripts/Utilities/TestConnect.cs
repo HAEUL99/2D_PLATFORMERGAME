@@ -6,8 +6,8 @@ using Photon.Realtime;
 
 public class TestConnect : MonoBehaviourPunCallbacks
 {
-    [SerializeField]
-    private LogIn logIn;
+    //[SerializeField]
+    //private LogIn logIn;
 
     void Start()
     {

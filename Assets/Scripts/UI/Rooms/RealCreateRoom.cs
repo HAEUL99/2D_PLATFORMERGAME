@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -79,10 +80,11 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
 
     public void OnClick_Back()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
 
-        _creatRoomMenu.SetActive(true);
-
+        // _creatRoomMenu.SetActive(true);
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("Game Scenes/Lobby");
     }
 
     public override void OnCreatedRoom()
