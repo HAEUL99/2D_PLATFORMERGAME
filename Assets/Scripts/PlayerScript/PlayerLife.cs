@@ -8,6 +8,9 @@ public class PlayerLife : MonoBehaviourPun
 {
     private Animator anim;
 
+    private bool timerRunning = false;
+    private float timeRemaining = 3f;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -21,6 +24,22 @@ public class PlayerLife : MonoBehaviourPun
 
     private void Die() {
         anim.SetTrigger("death");
+        timerRunning = true;
+        timeRemaining = 1f;
+        RunTimer();
+    }
+
+    private void RunTimer() {
+        if (timerRunning) {
+            if (timeRemaining > 0) {
+                timeRemaining -= Time.deltaTime;
+            }
+            else {
+                timeRemaining = 0;
+                timerRunning = false;
+                Respawn();
+            }
+        }
     }
 
     private void Respawn() {
@@ -29,7 +48,7 @@ public class PlayerLife : MonoBehaviourPun
         if (scene.name == "Forest") {
             transform.position = new Vector3(0f, 5f, 0f);
         }
-        else if (scene.name == "City") {
+        if (scene.name == "City") {
             transform.position = new Vector3(-96f, 3f, -25f);
         }
         anim.SetTrigger("respawn");

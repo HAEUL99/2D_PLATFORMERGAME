@@ -137,17 +137,19 @@ public class PlayerMovement_Photon : MonoBehaviourPun
             timeRemaining = 3f;
         }
         //Need to include this in order to allow the player to move with the platform
+        /*
         if (collision.gameObject.CompareTag("Moving Platform")) {
             collision.GetComponent<Collider>().transform.SetParent(transform);
         }
+        */
     }
-
+/*
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Moving Platform")) {
             collision.GetComponent<Collider>().transform.SetParent(null);
         }
     }
-
+*/
     [PunRPC]
     private void RPC_ChangeFlipState(bool flipStatus)
     {
