@@ -122,6 +122,7 @@ public class PlayerMovement_Photon : MonoBehaviourPun
             else {
                 timeRemaining = 0;
                 carrots = 0;
+                FindObjectOfType<AudioManager>().Play("Power Down");
                 timerRunning = false;
             }
         }
@@ -130,6 +131,7 @@ public class PlayerMovement_Photon : MonoBehaviourPun
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Carrot")) {
             Destroy(collision.gameObject);
+            FindObjectOfType<AudioManager>().Play("Power Up");
             carrots++;
             timerRunning = true;
             timeRemaining = 3f;

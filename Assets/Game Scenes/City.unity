@@ -272,7 +272,7 @@ Transform:
   - {fileID: 1191285509}
   - {fileID: 316272262}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &67808568
 GameObject:
@@ -3652,7 +3652,7 @@ Transform:
   m_Children:
   - {fileID: 1288358639}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &191483350
 GameObject:
@@ -8398,7 +8398,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6775524404711881976, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6775524404711881976, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8442,7 +8442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
       propertyPath: sounds.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
       propertyPath: sounds.Array.data[1].clip
@@ -8453,11 +8453,43 @@ PrefabInstance:
       value: clickbtn
       objectReference: {fileID: 0}
     - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d29ee629e104c9c48a6342b146355b20, type: 3}
+    - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: Power Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ecfa1f74f3ffda8449d4b76b5b7d31f6, type: 3}
+    - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: Power Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
       propertyPath: sounds.Array.data[1].pitch
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
+      propertyPath: sounds.Array.data[2].pitch
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
+      propertyPath: sounds.Array.data[3].pitch
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
       propertyPath: sounds.Array.data[1].volume
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775524404711881977, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
+      propertyPath: sounds.Array.data[3].volume
       value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 6775524404711881982, guid: 2b4d3e27154914e67b0c0a2249c1a92f, type: 3}
@@ -8498,11 +8530,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1920757021892043516, guid: 9c193f4d3ef4a2f4d9531e3eef733d22, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 108.2
+      value: 96.8
       objectReference: {fileID: 0}
     - target: {fileID: 1920757021892043516, guid: 9c193f4d3ef4a2f4d9531e3eef733d22, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -74.6
+      value: -39.61
       objectReference: {fileID: 0}
     - target: {fileID: 1920757021892043516, guid: 9c193f4d3ef4a2f4d9531e3eef733d22, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10092,7 +10124,7 @@ Transform:
   - {fileID: 1649466547}
   - {fileID: 264894617}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1618072832
 GameObject:
@@ -10123,7 +10155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1640089127
 GameObject:
@@ -15459,7 +15491,7 @@ Transform:
   - {fileID: 737523690}
   - {fileID: 2101965373}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1755562057 stripped
 Transform:
@@ -16004,7 +16036,7 @@ Transform:
   m_Children:
   - {fileID: 207392175}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1827359915
 GameObject:
