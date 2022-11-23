@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class FinishEvnt : MonoBehaviourPun
+public class FinishEvnt : MonoBehaviourPunCallbacks
 {
     [SerializeField]
     private GameObject resultUi;
@@ -27,7 +27,7 @@ public class FinishEvnt : MonoBehaviourPun
     string winnerNickname;
     int numOfTheme;
     string nameOfTheme;
-
+    int GameCount;
     private void Start()
     {
 
@@ -44,7 +44,7 @@ public class FinishEvnt : MonoBehaviourPun
         if (collision.gameObject.CompareTag("Player"))
         {
             winnerNickname = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
-            Debug.Log($"winnerNickname: {winnerNickname}");
+
             IsFinished();
             StartCoroutine(CountDown());
             //Invoke("NextScene", 3f);
@@ -78,7 +78,7 @@ public class FinishEvnt : MonoBehaviourPun
     {
 
         Debug.Log("NextScene");
-        base.photonView.RPC("RPC_LoadNextScene", RpcTarget.AllViaServer);
+        base.photonView.RPC("RPC_LoadNextScene", RpcTarget.All);
 
 
     }
@@ -107,9 +107,16 @@ public class FinishEvnt : MonoBehaviourPun
     [PunRPC]
     public void RPC_LoadNextScene()
     {
+
+        
+        
+        
         resultUi.SetActive(false);
         numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
-        
+        GameCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"];
+        Debug.Log($"GameCount: {GameCount}");
+
+
         switch ((numOfTheme + 1) % 2)
         {
             case 0:
@@ -122,8 +129,32 @@ public class FinishEvnt : MonoBehaviourPun
                 break;
         }
 
-        SceneManager.LoadScene($"Game Scenes/{nameOfTheme}");
+        
 
+
+        if ((int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"] == 2)
+        {
+            
+            Invoke("ShutDownServer", 1f);
+
+        }
+        else
+        {
+            PhotonNetwork.LoadLevel($"Game Scenes/{nameOfTheme}");
+        }
+
+        
+
+
+
+    }
+
+    public void ShutDownServer()
+    {
+        PhotonNetwork.LoadLevel($"Game Scenes/Main Menu");
+        PhotonNetwork.LeaveRoom();
+         
+       
     }
 
 

@@ -31,6 +31,8 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
     private Sprite[] change_img = new Sprite[2];
     private Image startImg;
 
+    public int GameCount = 0;
+
 
     private void Start()
     {
@@ -57,7 +59,7 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
             options.MaxPlayers = 4;
             //options.CustomRoomProperties = new Hashtable() { { "Theme", _choosetheme._numTheme } };
             //sceneList.Add(_choosetheme._numTheme);
-            
+ 
             
             // default roomname = host name
             PhotonNetwork.JoinOrCreateRoom(PlayerSetting.NickName, options, TypedLobby.Default);
@@ -65,11 +67,14 @@ public class RealCreateRoom : MonoBehaviourPunCallbacks
             // Debug.Log($"photonView.Owner.NickName: {photonView.Owner.NickName}");
 
             //string[] Property = new string[] { "Password" };
-            string[] LobbyOptions = new string[] { "Theme" };
+            string[] LobbyOptions = new string[] { "Theme", "NumOfPlay" };
             options.CustomRoomPropertiesForLobby = LobbyOptions;
-            options.CustomRoomProperties = new Hashtable() { { "Theme", _choosetheme._numTheme } };
-   
-            //PhotonNetwork.CurrentRoom.SetPropertiesListedInLobby(Property);
+            options.CustomRoomProperties = new Hashtable() { { "Theme", _choosetheme._numTheme }, { "NumOfPlay", GameCount } };
+
+            //string[] PlayCountOptions = new string[] { "NumOfPlay" };
+            //options.CustomRoomPropertiesForLobby = PlayCountOptions;
+           // options.CustomRoomProperties = new Hashtable() { { "NumOfPlay", GameCount } };
+
 
         }
 

@@ -93,8 +93,8 @@ public class EscEvnt : MonoBehaviour
 
     public void LeaveBtn()
     {
-        PhotonNetwork.LeaveRoom(true);
-        SceneManager.LoadScene("Game Scenes/Lobby");
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("Game Scenes/Main Menu");
 
     }
 

@@ -12,34 +12,32 @@ using TMPro;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public GameObject[] obj;
-   // public static GameObject PlayerInstance;
-    public bool Ischecked = false;
-    
-    private void OnEnable()
-    {
-        PhotonNetwork.Instantiate(obj[PhotonNetwork.LocalPlayer.ActorNumber - 1].name, gameObject.GetComponent<Transform>().position, Quaternion.identity, 0);
+    public bool ischecked = false;
 
-    }
-    /*
-    private void OnDisable()
-    {
-        PhotonNetwork.RemoveCallbackTarget(this);
-    }
-    
+    public int GameCount;
 
-    private void Awake()
+
+    public void Start()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"];
+            GameCount += 1;
+            ExitGames.Client.Photon.Hashtable options = new ExitGames.Client.Photon.Hashtable() { ["NumOfPlay"] = GameCount };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(options);
+        }
         
+        StartCoroutine(Initiate());
     }
 
-   
-    public void IsConnedted()
+    IEnumerator Initiate()
     {
+
+        yield return new WaitForSeconds(2f);
+        Debug.Log("?");
         PhotonNetwork.Instantiate(obj[PhotonNetwork.LocalPlayer.ActorNumber - 1].name, gameObject.GetComponent<Transform>().position, Quaternion.identity, 0);
+        Debug.Log("??");
     }
-    */
-
-
 
 
 
