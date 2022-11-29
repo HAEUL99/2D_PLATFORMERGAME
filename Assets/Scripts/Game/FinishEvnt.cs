@@ -43,6 +43,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Destroy(collision.gameObject);
             winnerNickname = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
 
             IsFinished();
@@ -51,6 +52,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
 
         }
     }
+
 
     public void IsFinished()
     {

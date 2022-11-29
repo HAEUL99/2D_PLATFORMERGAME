@@ -22,10 +22,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         gameUI.SetActive(false);
         if (PhotonNetwork.IsMasterClient)
         {
+            Debug.Log($"Before GameCount: {GameCount}");
             GameCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"];
             GameCount += 1;
             ExitGames.Client.Photon.Hashtable options = new ExitGames.Client.Photon.Hashtable() { ["NumOfPlay"] = GameCount };
             PhotonNetwork.CurrentRoom.SetCustomProperties(options);
+            Debug.Log($"After GameCount: {GameCount}");
         }
         
         StartCoroutine(Initiate());
