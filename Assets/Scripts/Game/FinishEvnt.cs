@@ -77,7 +77,6 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
     void NextScene()
     {
 
-        Debug.Log("NextScene");
         base.photonView.RPC("RPC_LoadNextScene", RpcTarget.All);
 
 
@@ -114,7 +113,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
         resultUi.SetActive(false);
         numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
         GameCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"];
-        Debug.Log($"GameCount: {GameCount}");
+
 
 
         switch ((numOfTheme + 1) % 2)
