@@ -43,12 +43,12 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            //Destroy(gameObject);
             winnerNickname = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
 
             IsFinished();
             StartCoroutine(CountDown());
-            //Invoke("NextScene", 3f);
+            Invoke("NextScene", 3f);
 
         }
     }
@@ -72,7 +72,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(1f);
         countTxt.text = "Move to next scene after 1 seconds";
         yield return new WaitForSeconds(1f);
-        NextScene();
+   
     }
 
 
@@ -94,9 +94,9 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
                 //show Winner,
                 resultUi.SetActive(true);
                 winnerImg.GetComponent<Image>().sprite = playersImg[playerInfo.Value.ActorNumber - 1];
-      
-
+               
                 
+
 
 
             }
@@ -130,13 +130,14 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
                 break;
         }
 
-        
 
 
+        Debug.Log($"Now GameCount: {GameCount}");
         if ((int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"] == 2)
         {
-            
-            Invoke("ShutDownServer", 1f);
+
+            PhotonNetwork.LoadLevel($"Game Scenes/Main Menu");
+            //PhotonNetwork.LeaveRoom();
 
         }
         else
@@ -153,7 +154,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
     public void ShutDownServer()
     {
         PhotonNetwork.LoadLevel($"Game Scenes/Main Menu");
-        PhotonNetwork.LeaveRoom();
+        //PhotonNetwork.LeaveRoom();
          
        
     }
