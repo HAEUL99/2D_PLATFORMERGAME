@@ -15,10 +15,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     public bool ischecked = false;
 
     public int GameCount;
-
+    public GameObject gameUI;
 
     public void Start()
     {
+        gameUI.SetActive(false);
         if (PhotonNetwork.IsMasterClient)
         {
             GameCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"];
@@ -34,9 +35,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
 
         yield return new WaitForSeconds(2f);
-        Debug.Log("?");
         PhotonNetwork.Instantiate(obj[PhotonNetwork.LocalPlayer.ActorNumber - 1].name, gameObject.GetComponent<Transform>().position, Quaternion.identity, 0);
-        Debug.Log("??");
+        gameUI.SetActive(true);
     }
 
 
