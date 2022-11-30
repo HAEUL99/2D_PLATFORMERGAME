@@ -410,7 +410,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
+  m_SynchronizeParameters:
+  - Type: 3
+    SynchronizeType: 1
+    Name: state
+  - Type: 9
+    SynchronizeType: 1
+    Name: death
+  - Type: 9
+    SynchronizeType: 1
+    Name: respawn
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

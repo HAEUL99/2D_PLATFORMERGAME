@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
@@ -20,7 +21,6 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
     [SerializeField]
     private Sprite[] playersImg;
 
-    //public GameObject[] obj;
 
     private TextMeshProUGUI countTxt;
 
@@ -28,27 +28,72 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
     int numOfTheme;
     string nameOfTheme;
     int GameCount;
+
+    private const byte FinishtheGame = 0;
+
     private void Start()
     {
 
         countTxt = countDowntxt.GetComponent<TextMeshProUGUI>();
         resultUi.SetActive(false);
-        
+        numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
+        GameCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"];
+
     }
 
+    private void OnEnable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived += OnEvent;
+    }
+
+    private void OnDisable()
+    {
+        PhotonNetwork.NetworkingClient.EventReceived -= OnEvent;
+    }
+
+    private void OnEvent(EventData obj)
+    {
+        if (obj.Code == FinishtheGame)
+        {
+            object data = (object)obj.CustomData;
+            string WinnerNickName = (string)data;
+
+            // change to the WinnerImg
+            foreach (KeyValuePair<int, Player> playerInfo in PhotonNetwork.CurrentRoom.Players)
+            {
+                if (playerInfo.Value.NickName == WinnerNickName)
+                {
+
+                    resultUi.SetActive(true);
+                    winnerImg.GetComponent<Image>().sprite = playersImg[playerInfo.Value.ActorNumber - 1];
+
+                }
+            }
+
+            //coutDown
+            StartCoroutine(CountDown());
+            StartCoroutine(LoadNextScene());
+
+        }
 
 
+        
+
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Destroy(gameObject);
             winnerNickname = collision.gameObject.GetComponent<PhotonView>().Owner.NickName;
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent(FinishtheGame, winnerNickname, raiseEventOptions, SendOptions.SendReliable);
 
+            /*
             IsFinished();
             StartCoroutine(CountDown());
             Invoke("NextScene", 3f);
+            */
 
         }
     }
@@ -64,11 +109,65 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(1f);
         countTxt.text = "Move to next scene after 1 seconds";
         yield return new WaitForSeconds(1f);
+
    
     }
 
+    IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(3f);
+        resultUi.SetActive(false);
 
-    
+        switch ((numOfTheme + 1) % 2)
+        {
+            case 0:
+                nameOfTheme = "Forest";
+                break;
+            case 1:
+                nameOfTheme = "City";
+                break;
+        }
+
+
+        int num = (int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"];
+        Debug.Log($"Now GameCount: {num}");
+        
+        if (num == 2)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+                PhotonNetwork.CurrentRoom.EmptyRoomTtl = 0;
+                PhotonNetwork.CurrentRoom.PlayerTtl = 0;
+
+                StartCoroutine(MasterLeaveRoom());
+            }
+            else
+            {
+                SceneManager.LoadScene($"Game Scenes/Main Menu");
+                PhotonNetwork.Disconnect();
+            }
+
+        }
+        else
+        {
+            SceneManager.LoadScene($"Game Scenes/{nameOfTheme}");
+        }
+         
+
+
+    }
+
+    public void IsFinished()
+    {
+
+        PhotonView photonView = PhotonView.Get(this);
+        photonView.RPC("RPC_IsFunFinished", RpcTarget.All, winnerNickname);
+
+
+
+    }
 
     [PunRPC]
     private void RPC_IsFunFinished(string winnerNickname)
@@ -77,7 +176,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
         {
             if (playerInfo.Value.NickName == winnerNickname)
             {
-                //show Winner,
+
                 resultUi.SetActive(true);
                 winnerImg.GetComponent<Image>().sprite = playersImg[playerInfo.Value.ActorNumber - 1];
                
@@ -89,25 +188,21 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
         }
     }
 
-    public void IsFinished()
+
+    public void NextScene()
     {
-
-
-        base.photonView.RPC("RPC_IsFunFinished", RpcTarget.All, winnerNickname);
-
+        PhotonView photonView = PhotonView.Get(this);
+        photonView.RPC("RPC_LoadNextScene", RpcTarget.All);
 
 
     }
-
 
 
     [PunRPC]
     public void RPC_LoadNextScene()
     {
 
-        
-        
-        
+       
         resultUi.SetActive(false);
         numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
         GameCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"];
@@ -118,11 +213,9 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
         {
             case 0:
                 nameOfTheme = "Forest";
-                //nameOfTheme = "LoadingScenBunny";
                 break;
             case 1:
-                nameOfTheme = "City";
-                //nameOfTheme = "LoadingScenCity";
+                nameOfTheme = "City";   
                 break;
         }
 
@@ -133,48 +226,41 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsMasterClient)
             {
+                
                 PhotonNetwork.CurrentRoom.IsOpen = false;
                 PhotonNetwork.CurrentRoom.EmptyRoomTtl = 0;
                 PhotonNetwork.CurrentRoom.PlayerTtl = 0;
 
-                //foreach(Player player in PhotonNetwork.PlayerList)
-
-
-                PhotonNetwork.Disconnect();
+                StartCoroutine(MasterLeaveRoom());
             }
             else
             {
                 PhotonNetwork.Disconnect();
             }
-
+            
         }
-        else
-        {
-            PhotonNetwork.LoadLevel($"Game Scenes/{nameOfTheme}");
-        }
-
-        
+        PhotonNetwork.LoadLevel($"Game Scenes/{nameOfTheme}");
 
 
 
     }
 
-    public void NextScene()
+    IEnumerator MasterLeaveRoom()
     {
+        yield return new WaitForSeconds(1.5f);
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene($"Game Scenes/Main Menu");
+    }    
 
-        base.photonView.RPC("RPC_LoadNextScene", RpcTarget.All);
-
-
-    }
-
+    /*
     public override void OnLeftRoom()
     {
-        PhotonNetwork.LoadLevel($"Game Scenes/Main Menu");
+        SceneManager.LoadScene($"Game Scenes/Main Menu");
 
         base.OnLeftRoom();
     }
     
 
-
+    */
 
 }

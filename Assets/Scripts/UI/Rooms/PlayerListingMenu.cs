@@ -189,6 +189,7 @@ public class PlayerListingMenu : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.IsOpen = false;
             // This room is no longer visible on the room list.
             PhotonNetwork.CurrentRoom.IsVisible = false;
+            PhotonNetwork.EnableCloseConnection = true;
 
             numOfTheme = (int)PhotonNetwork.CurrentRoom.CustomProperties["Theme"];
 
