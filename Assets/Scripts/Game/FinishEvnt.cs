@@ -135,9 +135,8 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
         Debug.Log($"Now GameCount: {GameCount}");
         if ((int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"] == 2)
         {
-
-            PhotonNetwork.LoadLevel($"Game Scenes/Main Menu");
-            //PhotonNetwork.LeaveRoom();
+            //PhotonNetwork.LoadLevel($"Game Scenes/Main Menu");
+            PhotonNetwork.LeaveRoom();
 
         }
         else
@@ -151,13 +150,14 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
 
     }
 
-    public void ShutDownServer()
+    public override void OnLeftRoom()
     {
         PhotonNetwork.LoadLevel($"Game Scenes/Main Menu");
-        //PhotonNetwork.LeaveRoom();
-         
-       
+
+        base.OnLeftRoom();
     }
+
+
 
 
 }
