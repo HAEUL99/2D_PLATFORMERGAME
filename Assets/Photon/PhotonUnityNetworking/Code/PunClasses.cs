@@ -418,6 +418,8 @@ namespace Photon.Pun
         public virtual void OnErrorInfo(ErrorInfo errorInfo)
         {
         }
+
+    
     }
 
 

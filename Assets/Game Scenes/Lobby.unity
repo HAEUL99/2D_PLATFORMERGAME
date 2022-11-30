@@ -3997,6 +3997,7 @@ MonoBehaviour:
   change_img:
   - {fileID: 21300000, guid: 98a4fb85a15044896bf42e4b5adb043e, type: 3}
   - {fileID: 21300000, guid: 8906ac9ef4edc4ca0b215a407bfeaeaf, type: 3}
+  GameCount: 0
 --- !u!1 &861400326
 GameObject:
   m_ObjectHideFlags: 0

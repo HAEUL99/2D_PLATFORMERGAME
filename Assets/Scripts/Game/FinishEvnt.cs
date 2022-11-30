@@ -54,15 +54,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
     }
 
 
-    public void IsFinished()
-    {
-        
-
-        base.photonView.RPC("RPC_IsFunFinished", RpcTarget.All, winnerNickname);
-
-        
-
-    }
+    
 
     IEnumerator CountDown()
     {
@@ -76,13 +68,7 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
     }
 
 
-    void NextScene()
-    {
-
-        base.photonView.RPC("RPC_LoadNextScene", RpcTarget.All);
-
-
-    }
+    
 
     [PunRPC]
     private void RPC_IsFunFinished(string winnerNickname)
@@ -101,6 +87,16 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
 
             }
         }
+    }
+
+    public void IsFinished()
+    {
+
+
+        base.photonView.RPC("RPC_IsFunFinished", RpcTarget.All, winnerNickname);
+
+
+
     }
 
 
@@ -135,8 +131,21 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
         Debug.Log($"Now GameCount: {GameCount}");
         if ((int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"] == 2)
         {
-            //PhotonNetwork.LoadLevel($"Game Scenes/Main Menu");
-            PhotonNetwork.LeaveRoom();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+                PhotonNetwork.CurrentRoom.EmptyRoomTtl = 0;
+                PhotonNetwork.CurrentRoom.PlayerTtl = 0;
+
+                //foreach(Player player in PhotonNetwork.PlayerList)
+
+
+                PhotonNetwork.Disconnect();
+            }
+            else
+            {
+                PhotonNetwork.Disconnect();
+            }
 
         }
         else
@@ -150,13 +159,21 @@ public class FinishEvnt : MonoBehaviourPunCallbacks
 
     }
 
+    public void NextScene()
+    {
+
+        base.photonView.RPC("RPC_LoadNextScene", RpcTarget.All);
+
+
+    }
+
     public override void OnLeftRoom()
     {
         PhotonNetwork.LoadLevel($"Game Scenes/Main Menu");
 
         base.OnLeftRoom();
     }
-
+    
 
 
 

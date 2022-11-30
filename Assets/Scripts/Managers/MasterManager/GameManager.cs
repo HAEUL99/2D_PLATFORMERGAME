@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void Start()
     {
         gameUI.SetActive(false);
-        if (PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.IsConnected)
         {
             Debug.Log($"Before GameCount: {GameCount}");
             GameCount = (int)PhotonNetwork.CurrentRoom.CustomProperties["NumOfPlay"];
