@@ -1107,6 +1107,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Finish Star (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1920757021892043517, guid: 9c193f4d3ef4a2f4d9531e3eef733d22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1920757021892043519, guid: 9c193f4d3ef4a2f4d9531e3eef733d22, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
