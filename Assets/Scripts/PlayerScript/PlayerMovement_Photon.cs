@@ -52,11 +52,42 @@ public class PlayerMovement_Photon : MonoBehaviourPun
 
         //Using float for horizontal movement to support controller inputs
         dirX = Input.GetAxis("Horizontal");
-        if (carrots > 0) {
+        if (carrots > 0)
+        {
             rb.velocity = new Vector2(dirX * (moveSpeed + (2f * carrots)), rb.velocity.y);
             RunTimer();
         }
-        else {
+        else
+        {
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        }
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            FindObjectOfType<AudioManager>().Play("Jump");
+        }
+        //movement();
+        UpdateAnimationState();
+    }
+
+    private void movement()
+    {
+        //Photon pun
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
+
+        //Using float for horizontal movement to support controller inputs
+        dirX = Input.GetAxis("Horizontal");
+        if (carrots > 0)
+        {
+            rb.velocity = new Vector2(dirX * (moveSpeed + (2f * carrots)), rb.velocity.y);
+            RunTimer();
+        }
+        else
+        {
             rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
         }
 
@@ -66,7 +97,6 @@ public class PlayerMovement_Photon : MonoBehaviourPun
             FindObjectOfType<AudioManager>().Play("Jump");
         }
 
-        UpdateAnimationState();
     }
 
     private void UpdateAnimationState()

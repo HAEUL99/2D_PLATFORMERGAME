@@ -30,8 +30,9 @@ public class TestConnect : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
 
-        //Debug.Log("Connected to Photon.", this);
-        //Debug.Log("My nickname is" + PhotonNetwork.LocalPlayer.NickName, this);
+        Debug.Log("Connected to Photon.", this);
+
+        Debug.Log("My nickname is" + PhotonNetwork.LocalPlayer.NickName, this);
 
         if(!PhotonNetwork.InLobby)
             PhotonNetwork.JoinLobby();

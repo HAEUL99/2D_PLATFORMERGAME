@@ -21,6 +21,11 @@ public class ScreenUi : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        SetInitUI();
+
+    }
+    private void SetInitUI()
+    {
         for (int i = 0; i < 4; i++)
         {
             PlayersImg[i].SetActive(false);
@@ -29,32 +34,32 @@ public class ScreenUi : MonoBehaviourPunCallbacks
         int count = 0;
         foreach (var newPlayer in PhotonNetwork.PlayerList)
         {
-            
+
             PlayersImg[count].SetActive(true);
             PlayersImg[count].GetComponent<Image>().sprite = _list[newPlayer.ActorNumber - 1];
             Playerstxt[count].GetComponent<TextMeshProUGUI>().text = newPlayer.NickName;
             count++;
 
         }
-
     }
 
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        for (int i = 0; i < 4; i++)
-        {
-            PlayersImg[i].SetActive(false);
-         
-        }
-        int count = 0;
-        foreach (var newPlayer in PhotonNetwork.PlayerList)
-        {
-            PlayersImg[count].SetActive(true);
-            PlayersImg[count].GetComponent<Image>().sprite = _list[newPlayer.ActorNumber - 1];
-            Playerstxt[count].GetComponent<TextMeshProUGUI>().text = newPlayer.NickName;
-            count++;
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    PlayersImg[i].SetActive(false);
 
-        } 
+        //}
+        //int count = 0;
+        //foreach (var newPlayer in PhotonNetwork.PlayerList)
+        //{
+        //    PlayersImg[count].SetActive(true);
+        //    PlayersImg[count].GetComponent<Image>().sprite = _list[newPlayer.ActorNumber - 1];
+        //    Playerstxt[count].GetComponent<TextMeshProUGUI>().text = newPlayer.NickName;
+        //    count++;
+
+        //}
+        SetInitUI();
     }
 }

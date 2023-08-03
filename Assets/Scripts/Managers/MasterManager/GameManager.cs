@@ -29,10 +29,15 @@ public class GameManager : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.SetCustomProperties(options);
             Debug.Log($"After GameCount: {GameCount}");
         }
-        
-        StartCoroutine(Initiate());
-    }
 
+        StartCoroutine(Initiate());
+        //Initiate();
+    }
+    //void Initiate()
+    //{
+    //    PhotonNetwork.Instantiate(obj[PhotonNetwork.LocalPlayer.ActorNumber - 1].name, gameObject.GetComponent<Transform>().position, Quaternion.identity, 0);
+    //    gameUI.SetActive(true);
+    //}
     IEnumerator Initiate()
     {
 
